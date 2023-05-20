@@ -1,44 +1,23 @@
 @extends('user.layouts.app')
 @section('content')
-<div class="content-wrapper">
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0" style="">{{$title}}</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">#</a></li>
-                    <li class="breadcrumb-item active">{{$title}}</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-
-    <!-- Main content -->
-    <section class="content">
-        <div class="row">
-            <div class="col-12 col-sm-12">
-                <div class="card card-primary card-outline card-tabs">
-                    
-                    <div class="card-body" >
-                        <form id="divForm">
-                            <table id="Table" class="table  table-hover table-bordered table-striped projects text-xs" cellspacing="0" width="100%">
-                                
-                            </table>
-                        </form>
-                    </div>
-                        
-                    <!-- /.card -->
+<div class="row">        
+    <div class="col-12">
+        <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                    <h6 class="text-white text-capitalize ps-3">{{$title}}</h6>
+                </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive p-0">
+                    <table id="Table" class="table align-items-center mb-0" cellspacing="0" width="100%">
+                            
+                    </table>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- /.content -->
-  </div>
+    </div>
+</div>  
 @endsection
 @push('page_scripts')
     <script>

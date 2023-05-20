@@ -1,70 +1,56 @@
 <!-- Sidebar -->
 <div class="sidebar">
-			<!-- SidebarSearch Form -->
-			<div class="form-inline" style="margin-top: 5px;">
-				<div class="input-group">
-					<input class="form-control form-control-sidebar" style="text-align: center;" ng-model="strServerTime" readonly disabled>
+	<ul class="navbar-nav">
+		<li class="nav-item">
+			<a class="nav-link text-white {{ (request()->routeIs('user.notice')) ? 'active bg-gradient-primary' : '' }}" href="{{ route('user.notice') }}">
+				<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+					<i class="material-icons opacity-10">language</i>
 				</div>
-			</div>
-			<!-- Sidebar Menu -->
-			<nav class="mt-2">
-				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-					
-					<li class="nav-item {{ (request()->routeIs('user.notice')) ? 'menu-open' : '' }}">
-						<a href="{{ route('user.notice') }}" class="nav-link {{ (request()->routeIs('user.notice')) ? 'active' : '' }}">
-							<i class="fas fa-globe-americas"></i>
-							<p>News</p>
-						</a>						
+				<span class="nav-link-text ms-1">News</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-white {{ (request()->routeIs('user.card')) ? 'active bg-gradient-primary' : '' }}" href="{{route('user.card')}}">
+				<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+					<i class="material-icons opacity-10">paid</i>
+				</div>
+				<span class="nav-link-text ms-1">Buy Cards</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-white {{ (request()->routeIs('user.my_card')) ? 'active bg-gradient-primary' : '' }}" href="{{route('user.my_card')}}">
+				<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+					<i class="material-icons opacity-10">receipt</i>
+				</div>
+				<span class="nav-link-text ms-1">My Cards</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-white {{ (request()->routeIs('user.credit')) ? 'active bg-gradient-primary' : '' }}" href="{{ route('user.credit') }}">
+				<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+					<i class="material-icons opacity-10">payment</i>
+				</div>
+				<span class="nav-link-text ms-1">Get Credits</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-white {{ (request()->routeIs('user.checkcard')) ? 'active bg-gradient-primary' : '' }}" href="{{ route('user.checkcard') }}">
+				<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+					<i class="material-icons opacity-10">check_circle</i>
+				</div>
+				<span class="nav-link-text ms-1">Check Cards</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-white {{ (request()->routeIs('user.faq')) ? 'active bg-gradient-primary' : '' }}" href="{{ route('user.faq') }}">
+				<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+					<i class="material-icons opacity-10">help_outline</i>
+				</div>
+				<span class="nav-link-text ms-1">FAQ</span>
+			</a>
+		</li>	
+	</ul>
+	<!-- /.sidebar-menu -->
+</div>
+<!-- /.sidebar -->
 
-					</li>				
-					<li class="nav-item {{ (request()->routeIs('user.card')) ? 'menu-open' : '' }}">
-						<a href="{{route('user.card')}}" class="nav-link  {{ (request()->routeIs('user.card')) ? 'active' : '' }}"> 
-							<i class="fab fa-cc-visa"></i>
-							<p>Buy Cards</p>
-						</a>
-					</li>
-                    <li class="nav-item {{ (request()->routeIs('user.my_card')) ? 'menu-open' : '' }}">
-						<a href="{{route('user.my_card')}}" class="nav-link {{ (request()->routeIs('user.my_card')) ? 'active' : '' }}"> 
-							<i class="fab fa-cc-mastercard"></i>
-							<p>My Cards</p>
-						</a>
-					</li>                    
-					<li class="nav-item {{ (request()->routeIs('user.credit')) ? 'menu-open' : '' }}">
-						<a href="{{ route('user.credit')}}" class="nav-link {{ (request()->routeIs('user.credit')) ? 'active' : '' }}"> 
-							<i class="fab fa-cc-visa"></i>
-							<p>Get Credits</p>
-						</a>
-					</li>			
-					<li class="nav-item {{ (request()->routeIs('user.checkcard')) ? 'menu-open' : '' }}">
-						<a href="{{route('user.checkcard')}}" class="nav-link  {{ (request()->routeIs('user.checkcard')) ? 'active' : '' }}"> 
-							<i class="fab fa-cc-visa"></i>
-							<p>Check Cards</p>
-						</a>
-					</li>	
-					<li class="nav-item {{ (request()->is('user.faq')) ? 'menu-open' : '' }}">
-						<a href="{{ route('user.faq') }}" class="nav-link {{ (request()->is('user.faq')) ? 'active' : '' }}">
-							<i class="fas fa-question-circle"></i>
-							<p>FAQ</p>
-						</a>
-					</li>
-                    <li class="nav-item">
-						<style>
-							[class*="sidebar-dark-"] .nav-sidebar > .nav-item:hover > .nav-link.btnIDENTITY{
-								transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-							}
-							[class*="sidebar-dark-"] .nav-sidebar > .nav-item:hover > .nav-link.btnIDENTITY:hover {
-								color: #fff;
-								background-color: #218838;
-								border-color: #1e7e34;
-							}
-						</style>
-						<a href="https://idstore.one" class="nav-link btnIDENTITY btn-success text-white" target="_blank">
-							<i class="fas fa-question-circle"></i>
-							<p>Identity Store</p>
-						</a>
-					</li>
-				</ul>
-			</nav>
-			<!-- /.sidebar-menu -->
-		</div>
-		<!-- /.sidebar -->
