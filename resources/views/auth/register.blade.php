@@ -23,16 +23,17 @@
         </div>
     </div>
     <!-- loader END -->
-    <div style="background-image: url('{{ asset('user_assets/images/auth/01.png') }}">
+    <!-- <div style="background-image: url('{{ asset('user_assets/images/auth/01.png') }}"> -->
+    <div>
         <div class="wrapper">
             <section class="vh-100 bg-image">
                 <div class="container h-100">
                     <div class="row justify-content-center h-100 align-items-center">
-                        <div class="col-md-6 mt-5">
+                        <div class="col-md-5 mt-5">
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-body m-3">
                                     <div class="auth-form">
-                                        <h2 class="text-center mb-4">Generate new account</h2>
+                                        <h4 class="text-center mb-4">Wealth Awaits: Register Account</h4>
                                         <!-- <a href="../../dashboard/index.html" class="navbar-brand dis-none align-items-center justify-content-center">
                                        <svg width="36" class="text-primary" viewBox="0 0 128 150" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <g>
@@ -90,7 +91,7 @@
                                                 </div>
                                             @endif
                                             <div class="text-center">
-                                                <a href="{{ route('login') }}" class="btn btn-success">Goto Login</a>
+                                                <a href="{{ route('login') }}" class="btn btn-success">Go to Login</a>
                                                 <button type="submit" class="btn btn-primary">Register</button>
                                                 {{-- <button type="button" class="btn btn-primary submit">Generate</button> --}}
                                             </div>
