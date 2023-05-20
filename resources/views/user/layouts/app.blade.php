@@ -49,11 +49,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </span>
                             </a>
                         </li>
+                        
                         <li class="nav-item d-flex align-items-center">
                             
                             <a class="btn btn-outline-warning btn-sm mb-0 me-3 " target="_blank">
                                 <i class="material-icons opacity-10">payment</i>    
                                 <span class="user_cart_cnt" style="margin-left:10px; font-weight:700;">payment</i> 0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item d-xl-none pe-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link p-0 text-body" id="iconNavbarSidenav">
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                </div>
                             </a>
                         </li>
                         <li class="nav-item dropdown pe-2 d-flex align-items-center">
