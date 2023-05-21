@@ -28,3 +28,36 @@
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
 }
+.alert{  
+  text-align: center;
+}
+.card-header > .border-radius-lg h6{
+  color: white;
+}
+.badge-warning{
+  background-image: linear-gradient(195deg, #49a3f1 0%, #1A73E8 100%);
+}
+.btn-check-wait {
+  margin: 0 auto;
+  width: 70%;
+  background-image: linear-gradient(195deg, #49a3f1 0%, #1A73E8 100%);
+}
+.btn-primary, .btn-warning{
+  background-image: linear-gradient(195deg, #306844 0%, #455b55 100%);  
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(30,69,62, 0.4) !important;
+}
+.badge.bg-info {
+  background-image: linear-gradient(195deg, #306844 0%, #455b55 100%);
+}
+
+.btn-check-wait {
+  background-image: linear-gradient(195deg, #306844 0%, #455b55 100%);
+}
+.navbar .btn-outline-primary, .navbar .btn-outline-primary:hover:not(.active) { 
+  border-color: #4CAF50;
+  color: #4CAF50;
+}
+.navbar .btn-outline-warning:hover:not(.active), .navbar .btn-outline-warning{
+  color: #306844;
+  border-color: #306844;
+}

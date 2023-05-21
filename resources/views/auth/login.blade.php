@@ -81,7 +81,7 @@
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
                                                         @enderror
-                                                        <button type="submit" class="btn btn-primary">{{ __('Login') }}</button>
+                                                        <button type="submit" class="btn btn-success">{{ __('Login') }}</button>
                                                     </div>
                                                     <!-- <div class="text-center mt-3">
                                                         <p>or sign in with others account?</p>

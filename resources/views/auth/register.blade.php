@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>COINEX</title>
+    <title>Houstlers</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('user_assets/images/favicon.ico') }}" />
     <!-- <link rel="stylesheet" href="{{ asset('user_assets/css/libs.min.css') }}"> -->
@@ -92,8 +92,8 @@
                                             @endif
                                             <div class="text-center">
                                                 <a href="{{ route('login') }}" class="btn btn-success">Go to Login</a>
-                                                <button type="submit" class="btn btn-primary">Register</button>
-                                                {{-- <button type="button" class="btn btn-primary submit">Generate</button> --}}
+                                                <button type="submit" class="btn btn-success">Register</button>
+                                                {{-- <button type="button" class="btn btn-success submit">Generate</button> --}}
                                             </div>
                                         </form>
                                         <!-- <div class="new-account mt-3 text-center">

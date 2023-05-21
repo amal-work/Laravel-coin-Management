@@ -72,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     @if (Auth::check() && Auth::user()->image != "")
                                         src="{{Auth::user()->image}}"
                                     @else
-                                        src="{{asset('user_assets/images/logo.png')}}"
+                                        src="{{asset('user_assets/images/avatar.png')}}"
                                     @endif 
                                     class="avatar avatar-sm  me-3"
                                 />
@@ -159,7 +159,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Github buttons -->
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-        <script src="{{asset('user_assets/js/material-dashboard.min.js?v=3.0.0')}}"></script>        
+        
                 
         <script>
             getRealTimeInfo();

@@ -6,7 +6,7 @@
  
     <div class="row">
         <div class="col-12">
-          <div class="card my-4">
+          <div class="card my-2">
             <div class="card-body px-0 pb-2">
                 <div class="table-responsive p-0">
                     <table class="table align-items-center justify-content-center mb-0">
@@ -90,7 +90,7 @@
                                     </select>
                                 </td>
                                 <td style="width: auto">
-                                    <button class="btn btn-sm btn-primary btnSearch float-right btn_margin0">Search</button>
+                                    <button class="btn btn-sm btn-primary btnSearch shadow-primary float-right btn_margin0">Search</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -106,26 +106,29 @@
             
         </div>
         <div class="col-12">
-            <div class="card my-4">
+            <div class="card my-2">
                 <div class="card-header p-3">       
-                    <div class="alert alert-warning alert-dismissible text-white" role="alert">
+                    <div class="alert bg-gradient-primary shadow-primary alert-dismissible text-white" role="alert">
                         <h5 class="text-white">Turn Pocket Change into a Fortune</h5>
                         <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>             
-                    <h6 class="text-left text-sm "> 
+                    <h6 class="text-center text-sm "> 
                         Unbeatable Offer: Save {{$discount->discount}}% with No Refund Purchase (Buy NoRef)                        
                     </h6>
-                    <h6 class="text-left text-sm ">
+                    <h6 class="text-center text-sm ">
                         Or get 100% Refund for Declined Cards, Excluding Checking Fee! (Buy Ref)
                     </h6>
                 </div>
                 <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-lg-2 col-sm-3 col-6">  
+                    <div class="row">                        
+                        <div class="col-lg-2 col-sm-3 col-6">                             
                             <a href="javascript:void(0)" class="btn bg-gradient-success w-100 mb-0 toast-btn btnBuyCard" >Buy Selected Cards</a>
-                        </div>                            
+                        </div>       
+                        <div class="col-lg-2 col-sm-3 col-6 pt-2"> 
+                            <span class="total-checked text-success pr-3" style="font-weight: bold;font-size: 22px;"></span> 
+                        </div>                     
                     </div>               
                 </div>            
             </div>
@@ -137,7 +140,7 @@
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">{{$title}}</h6>
+                        <h6 class="text-uppercase text-center ps-3">{{$title}}</h6>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
@@ -369,7 +372,7 @@
 			$('.total-checked').empty();
         }
         
-        $('body').on('click', '.btnBuyCard', function () {
+        $('body').on('click', '.btnBuyCard', function () {            
             //var form = $('#divProductForm');
             var table = $('#cardTable').DataTable(); 
             var products = "";
@@ -388,6 +391,7 @@
                 return false;
             }
             var action = '/cards';
+            alert(products = products.slice(0,-1));
             $.ajax({
                 url: action,
                 data: {products},

@@ -5,7 +5,7 @@
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">{{$title}}</h6>
+                        <h6 class="text-white text-uppercase text-center ps-3">{{$title}}</h6>
                     </div>
                 </div>
                 <div class="card-body">
@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group row mt-3">
                             <div class="col-sm-5 col-md-4">
-                                <button type="button" class="btn btn-success btn-sm btnSave" >Save</button>
+                                <button type="button" class="btn btn-primary btn-sm btnSave" >Save</button>
                             </div>                            
                         </div>                          
                     </form>
