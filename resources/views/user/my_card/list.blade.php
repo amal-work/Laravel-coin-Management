@@ -45,7 +45,21 @@
             processing: true,
             serverSide: true,
             scrollY: "640px",
-            pageLength: 100,
+            pageLength: 10,
+            autoWidth: false,
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                    type: "none",
+                    target: ""
+                }
+            },
+            language: {
+                paginate: {
+                next: '&#8594;', // or '→'
+                previous: '&#8592;' // or '←' 
+                }
+            },
             // fixedHeader: true,
             ajax: {
                 url: "{{ route('user.my_card') }}"
@@ -58,7 +72,7 @@
             ],
             responsive: true, lengthChange: true,
             buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#coinTable_wrapper .col-md-6:eq(0)');
+        });//.buttons().container().appendTo('#coinTable_wrapper .col-md-6:eq(0)');
         // $('body').on('click', '.btnEdit', function () {
         //     var coinId = $(this).attr('data-id');
         //     window.open('/admin/coin/edit/' + coinId, '정보 수정', 'scrollbars=1, resizable=1, width=1000, height=620');

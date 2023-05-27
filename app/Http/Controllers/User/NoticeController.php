@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Notice;
+use App\Models\CardSell;
+
 use Yajra\DataTables\DataTables;
 
 class NoticeController extends Controller
@@ -35,9 +37,9 @@ class NoticeController extends Controller
             $notice = Notice::where('is_del', 0)
                 ->orderBy('updated_at', 'DESC');
 
-            return DataTables::eloquent($notice)
+            return DataTables::of($notice)
                 ->addIndexColumn()
-                
+
                 ->editColumn('subject', function ($row) {
                     $title = '<span data-id="' . $row->id . '" style="cursor:pointer" class="btnDetail1">' . $row->subject . '</span>';
                     return $title;
@@ -45,11 +47,15 @@ class NoticeController extends Controller
                 ->rawColumns(['check', 'writer', 'subject'])
                 ->make(true);
         }
-        return view('user.contact.notice_list', compact('title'));
+
+        $ntotalsUsers = User::count();
+        $activeUsers = ceil($ntotalsUsers * rand(1, 2)/10);
+        $nCardsSold = CardSell::count();
+        return view('user.contact.notice_list', compact('title', 'ntotalsUsers', 'activeUsers', 'nCardsSold'));
     }
 
     /**
-     * 
+     *
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */

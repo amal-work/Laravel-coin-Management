@@ -59,7 +59,21 @@
             processing: true,
             serverSide: true,
             scrollY: "640px",
-            pageLength: 100,
+            pageLength: 10,
+            autoWidth: false,
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                    type: "none",
+                    target: ""
+                }
+            },
+            language: {
+                paginate: {
+                next: '&#8594;', // or '→'
+                previous: '&#8592;' // or '←' 
+                }
+            },
             // fixedHeader: true,
             ajax: {
                 url: "{{ route('admin.msg.list') }}"

@@ -39,11 +39,25 @@
             });
         });	
         var table = $('#Table').DataTable({
-            processing: true,
+            processing: false,
             serverSide: true,
             scrollY: "640px",
-            pageLength: 100,
-            // fixedHeader: true,
+            pageLength: 10,
+            fixedHeader: true,
+            autoWidth: false,
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                    type: "none",
+                    target: ""
+                }
+            },
+            language: {
+                paginate: {
+                next: '&#8594;', // or '→'
+                previous: '&#8592;' // or '←' 
+                }
+            },
             ajax: {
                 url: "{{ route('user.faq') }}"
             },
@@ -53,7 +67,7 @@
             ],
             responsive: true, lengthChange: true,
             buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#Table_wrapper .col-md-6:eq(0)');
+        });//.buttons().container().appendTo('#Table_wrapper .col-md-6:eq(0)');
         
         $('body').on('click', '.btnDetail', function () {
             var faqId = $(this).attr('data-id');

@@ -155,7 +155,9 @@
 					v = a.val();
 				GATE = v;
 			});
-			$('#check').on('click', function(){
+			$('#check').on('click', function(e){
+				e.preventDefault();
+				
 				var line = $.grep($("#cclist").val().split(/\r?\n/), function(n, i){
 						return (n !== "" && n != null);
 					}).map(function (a) {

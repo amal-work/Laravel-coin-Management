@@ -191,7 +191,7 @@ class CardController extends Controller
 				$feeprice = floatval(array_key_exists('chk_cards_buy', $setting_prices['check_buycard']) ? $setting_prices['check_buycard']['chk_cards_buy'] : 0);
 				$totalPrice = $cardprice + $feeprice;
 				if ($user->money < $feeprice || $user->money < $totalPrice) {
-					return response()->json(["status" => "not enough money", "data" => 'You need to purchase credit card.']);
+					return response()->json(["status" => "not enough money", "data" => 'Top up your account']);
 				}
 
 				$keyApi = array_key_exists('chk_cards_key', $setting_keys) ? $setting_keys['chk_cards_key'] : null;
@@ -233,7 +233,7 @@ class CardController extends Controller
 				}
 				$totalPrice = $cardprice + $feeprice;
 				if ($user->money < $feeprice || $user->money < $totalPrice) {
-					return response()->json(["status" => "not enough money", "data" => 'You need to purchase credit card.']);
+					return response()->json(["status" => "not enough money", "data" => 'Top up your account']);
 				}
 				$keyApi = array_key_exists('checkcc_ru_key', $setting_keys) ? $setting_keys['checkcc_ru_key'] : null;
 				$url = 'https://api.check-cc.ru/?key=' . $keyApi . '&cc=' . $cardinfo . '&gate=' . $gateName;
@@ -257,7 +257,7 @@ class CardController extends Controller
 		}
 
 		if ($user->money < $totalPrice) {
-			return response()->json(["status" => "not enough money", "data" => 'You need to purchase credit card.']);
+			return response()->json(["status" => "not enough money", "data" => 'Top up your account']);
 		}
 		$user->money = $user->money - $totalPrice;
 		$user->save();

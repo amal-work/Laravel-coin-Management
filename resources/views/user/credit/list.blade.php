@@ -27,9 +27,6 @@
                             <a href="javascript:void(0)" class="btn bg-gradient-info w-100 mb-0 toast-btn btnNew" type="button" data-id="DOGE">DOGE</a>
                         </div>     
                     </div>  
-                    <span>
-                        To top up your account, send any amount to the following address. Generate a new address for each payment.
-                    </span>
                     <div class="bg-lightgray rounded text-center p-2 card card-danger card-outline d-none" id="pay_body">
                         <div class="well well-lg">
                             <span style="font-size: large">
@@ -74,7 +71,21 @@
             processing: false,
             serverSide: true,
             scrollY: "640px",
-            pageLength: 100,
+            pageLength: 10,
+            autoWidth: false,
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                    type: "none",
+                    target: ""
+                }
+            },
+            language: {
+                paginate: {
+                next: '&#8594;', // or '→'
+                previous: '&#8592;' // or '←' 
+                }
+            },
             // fixedHeader: true,
             ajax: {
                 url: "{{ route('user.credit') }}"
@@ -89,7 +100,7 @@
             ],
             responsive: true, lengthChange: true,
             buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#coinTable_wrapper .col-md-6:eq(0)');
+        });//.buttons().container().appendTo('#coinTable_wrapper .col-md-6:eq(0)');
        
         $('body').on('click', '.btnCheck', function () {
             refreshTable();

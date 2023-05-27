@@ -18,6 +18,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link rel="stylesheet" href="/plugins/select2/css/select2.min.css">
         <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
         <link rel="stylesheet" href="{{asset('user_assets/css/custom.css')}}">
+
+        <!-- jquery bootstrap data table -->
+        <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+        <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+        <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+        <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+		<link rel="stylesheet" href="{{asset('plugins/datatables-checkboxes/css/dataTables.checkboxes.css')}}">
+
         @yield('third_party_stylesheets')        
         @stack('page_css')
 
@@ -26,7 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
             <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-            <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
+            <a class="navbar-brand m-0" href="{{URL::to('/notice')}}" target="_self">
                 <img src="{{asset('user_assets/images/logo.png')}}" class="navbar-brand-img h-100" alt="main_logo">                
             </a>
             </div>
@@ -135,9 +143,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </script>
        
         <script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
-        <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+        <!-- <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
         <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
         <script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables-checkboxes/js/dataTables.checkboxes.min.js')}}"></script>
+         -->
+        <!-- DataTables  & Plugins -->
+        <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+        <!-- <script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script> -->
+		<script src="{{asset('plugins/datatables-checkboxes/js/dataTables.checkboxes.min.js')}}"></script>
         <script src="{{asset('plugins/datatables-checkboxes/js/dataTables.checkboxes.min.js')}}"></script>
         
         <script src="/plugins/select2/js/select2.full.min.js"></script>
@@ -147,6 +165,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         
         <script src="{{asset('user_assets/js/perfect-scrollbar.min.js')}}"></script>
         <script src="{{asset('user_assets/js/smooth-scrollbar.min.js')}}"></script>
+        <script src="{{asset('user_assets/js/material-dashboard.min.js')}}"></script>
+        
         <script>
             var win = navigator.platform.indexOf('Win') > -1;
             if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -157,7 +177,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             }
         </script>
         <!-- Github buttons -->
-        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         
                 

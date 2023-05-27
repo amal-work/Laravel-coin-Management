@@ -51,7 +51,7 @@ Route::middleware('user')->name('user.')->group(
         Route::get('/search_state/{id}',            [App\Http\Controllers\User\CardController::class, 'search_state'])->name('card.search_state');
         Route::get('/search_city/{id}',             [App\Http\Controllers\User\CardController::class, 'search_city'])->name('card.search_city');
 		Route::get('/check-cards',                  [App\Http\Controllers\User\CardController::class, 'checkCards'])->name('checkcard');
-		Route::post('/process-check-cards',                  [App\Http\Controllers\User\CardController::class, 'processcheckCards'])->name('processcheckCards');
+		Route::post('/process-check-cards',         [App\Http\Controllers\User\CardController::class, 'processcheckCards'])->name('processcheckCards');
         
         /////////////////////////////** MY CARD **///////////////////////////////
         Route::get('/my_card',                      [App\Http\Controllers\User\MyCardController::class, 'index'])->name('my_card');

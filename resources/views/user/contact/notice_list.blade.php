@@ -1,6 +1,86 @@
 @extends('user.layouts.app')
 @section('content')
-<div class="row">        
+<div class="row">
+    <div class="col-12">
+        <div class="alert alert-success alert-dismissible text-white" role="alert">
+            <h5 class="text-white">Welcome to The World's Most Profitable Business</h5>
+            <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">person</i>
+                </div>
+                <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Total Users</p>
+                <h4 class="mb-0">{{$ntotalsUsers}}</h4>
+                </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than lask week</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">person</i>
+                </div>
+                <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Active Users</p>
+                <h4 class="mb-0">{{$activeUsers}}</h4>
+                </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than lask month</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">account_balance_wallet</i>
+                </div>
+                <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Cards Sold</p>
+                <h4 class="mb-0">{{$nCardsSold}}</h4>
+                </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">-2%</span> than yesterday</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">payment</i>
+                </div>
+                <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">R.O.I.</p>
+                <h4 class="mb-0">50x ~ 2000x</h4>
+                </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than last year</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
     <div class="col-12">
         <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -11,13 +91,13 @@
             <div class="card-body px-0 pb-2">
                 <div class="table-responsive p-0">
                     <table id="Table" class="table align-items-center mb-0" cellspacing="0" width="100%">
-                            
+
                     </table>
                 </div>
             </div>
         </div>
     </div>
-</div>  
+</div>
 @endsection
 @push('page_scripts')
     <script>
@@ -27,29 +107,43 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-        });	
+        });
         if($('#Table').length){
-        var table = $('#Table').DataTable({
-            processing: true,
-            serverSide: true,
-            scrollY: "640px",
-            pageLength: 100,
-            // fixedHeader: true,
-            ajax: {
-                url: "{{ route('user.notice') }}"
-            },
-            columns: [
-                {title: "Date", data: 'created_at', name: 'created_at', orderable  : false, className:"text-center", width:"120px"},
-                {title: "Info", data: 'subject', name: 'subject', orderable  : false , className:"text-center"},
-            ],
-            responsive: true, lengthChange: true,
-            buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#Table_wrapper .col-md-6:eq(0)');
-        
-        function refreshTable() {
-            $('#Table').DataTable().ajax.reload();
+            var table = $('#Table').DataTable({
+                processing: true,
+                serverSide: true,
+                scrollY: "640px",
+                pageLength: 10,
+                autoWidth: false,
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                        type: "none",
+                        target: ""
+                    }
+                },
+                language: {
+                    paginate: {
+                    next: '&#8594;', // or '→'
+                    previous: '&#8592;' // or '←' 
+                    }
+                },
+                // fixedHeader: true,
+                ajax: {
+                    url: "{{ route('user.notice') }}"
+                },
+                columns: [
+                    {title: "Date", data: 'created_at', name: 'created_at', orderable  : false, className:"text-center", width:"120px"},
+                    {title: "Info", data: 'subject', name: 'subject', orderable  : false , className:"text-center"},
+                ],
+                responsive: true, lengthChange: true,
+                buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            });//.buttons().container().appendTo('#Table_wrapper .col-md-6:eq(0)');
+
+            function refreshTable() {
+                $('#Table').DataTable().ajax.reload();
+            }
         }
-        }
-        
+
     </script>
 @endpush

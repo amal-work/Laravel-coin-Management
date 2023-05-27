@@ -63,6 +63,20 @@
             processing: true,
             serverSide: true,
             scrollY: "620px",
+            autoWidth: false,
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                    type: "none",
+                    target: ""
+                }
+            },
+            language: {
+                paginate: {
+                next: '&#8594;', // or '→'
+                previous: '&#8592;' // or '←' 
+                }
+            },
             ajax: {
                 url: "{{ route('admin.cash.user_cash_list', [$type, $user_id]) }}"
             },

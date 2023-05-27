@@ -35,7 +35,7 @@ class FAQController extends Controller
             $qnas = FAQ::where('is_del', 0)
                 ->orderBy('updated_at', 'DESC');
 
-            return DataTables::eloquent($qnas)
+            return DataTables::of($qnas)
                 ->addIndexColumn()
                 ->addColumn('check', function ($row) {
                     $check = '<input type="checkbox" name="chkProduct[]" onclick="" value="' . $row->id . '">';

@@ -67,6 +67,20 @@
             serverSide: true,
             searching: false,
             scrollY: "100%",
+            autoWidth: false,
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                    type: "none",
+                    target: ""
+                }
+            },
+            language: {
+                paginate: {
+                next: '&#8594;', // or '→'
+                previous: '&#8592;' // or '←' 
+                }
+            },
             ajax: {
                 url: "{{ route('admin.user.list') }}"
             },
