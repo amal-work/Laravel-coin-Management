@@ -50,7 +50,7 @@ class Apirone {
         $req_arr['currency']= strtolower($coinType);
         $req_arr['callback'] = array(
             'method' => "POST",
-            'url' => 'https://hustler.cards/api/callback_payment',
+            'url' => 'https://hustlers.cc/api/callback_payment',
             'data' => array(
                 'id' => $genId
             )

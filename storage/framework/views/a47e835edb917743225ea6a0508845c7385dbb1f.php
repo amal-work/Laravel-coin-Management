@@ -41,7 +41,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <hr class="horizontal light mt-0 mb-2">
             <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">                
                 <?php echo $__env->make('user.layouts.menu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-            </div>            
+            </div> 
+            <div class="bottom_box">
+                <div class="alert alert-dismissible text-white custom-alert" role="alert">
+                    <h5 class="text-white">Secure Your Financial Future!</h5>	
+                    <p>⭐Bookmark <a href="http://hustlers.cc/" target="_blank"> Hustlers.cc!</a>⭐</p>	
+                </div>
+            </div>           
         </aside>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
             <!-- Navbar -->

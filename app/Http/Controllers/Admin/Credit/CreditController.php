@@ -31,12 +31,11 @@ class CreditController extends Controller
     {
         $title = "Credit Card";
         
-
         if ($request->ajax()) {
             $monies = Credit::where('is_del', 0)->orderBy('id', 'DESC');
                 
 
-            return DataTables::eloquent($monies)
+            return DataTables::of($monies)
                 ->addIndexColumn()
                 ->addColumn('check', function ($row) {
                     $check = '<input type="checkbox" name="chkProduct[]" onclick="" value="' . $row->id . '">';

@@ -12,10 +12,12 @@
     background: #fff; } }
 
 :focus {
-  outline: none; }
+  outline: none; 
+}
 
 small, .small {
-  color: #BFBFBF; }
+  color: #BFBFBF; 
+}
 
 :root {
   --bs-blue: #3a57e8;

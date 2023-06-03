@@ -93,3 +93,27 @@ table.dataTable>tbody>tr.child ul.dtr-details{
   width: 100%;
   white-space: pre-line;
 }
+hr.horizontal.light{
+  background-image: linear-gradient(90deg,hsla(0,0%,100%,0),#fff,hsla(0,0%,100%,0));
+  background-color: transparent;
+}
+.navbar-vertical.navbar-expand-xs .navbar-collapse{
+  height: calc(100vh - 278px);
+}
+.custom-alert{
+  padding: 29px 10px 10px;
+    margin: 10px 10px;
+}
+.custom-alert p{
+  font-size: 16px;
+}
+.custom-alert > h5{
+  font-size: 14px;
+}
+.custom-alert p a{
+  text-decoration: underline;
+  color: #FFA726;
+}
+.custom-alert p a:hover, .custom-alert p a:visited, .custom-alert p a:focus{
+  color: #FB8C00  ;
+}

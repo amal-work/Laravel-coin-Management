@@ -95,7 +95,7 @@
                 {title: "Status", data: 'status', name: 'status', width:"40px", className: "text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"},
                 {title: "Date", data: 'created_at', name: 'created_at', width:'80px', className: "text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"},
                 {title: "Wallet", data: 'wallet_address', name: 'wallet_address', className: "text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"},
-                {title: "Amount", data: 'amount', name: 'amount', width:'80px', className: "text-uppercase text-secondary text-xxs font-weight-bolder opacity-7", render(data){ return data ? data.toFixed(2) : '0.00';}},
+                {title: "Amount", data: 'amount', name: 'amount', width:'80px', className: "text-uppercase text-secondary text-xxs font-weight-bolder opacity-7", render(data){ return data ? parseFloat(data).toFixed(2) : '0.00';}},
                 {title: "Action/Result", data: 'action', name: 'action', orderable:false, searchable: false, width: "40px", className: "text-center text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2"},
             ],
             responsive: true, lengthChange: true,
@@ -126,9 +126,11 @@
                         $('#coin_fee').html(data.fee);
                         $('#wallet_address').html(data.wallet_address);
                         //card.parent().html(data)
+                        refreshTable();
                     }else{
                         alert(data);
                     }
+                    
                 },
                 error: function (data) {
                     card.parent().css("color", "red")
@@ -136,7 +138,7 @@
                 }
             });
         });
-        function refreshTable() {
+        function refreshTable() {            
             $('#cardTable').DataTable().ajax.reload();
         }
         

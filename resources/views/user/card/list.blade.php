@@ -423,7 +423,7 @@
                 return false;
             }
             var action = '/cards';
-            alert(products = products.slice(0,-1));
+            //
             $.ajax({
                 url: action,
                 data: {products},
@@ -433,9 +433,9 @@
 					if(rows.length){
 						rows.forEach( (e, i) => {
 							$('#cardTable').find('.btn-wrap-'+e).css("color", "red")
-                                                .html('<div class="alert alert-secondary alert-dismissible text-white" role="alert">'
-                                                +'<span class="text-sm">'+'You have successfully purchased~~~ this card.'+'</span>'
-                                                +'</div>');
+                                                .html('<div class="alert alert-success alert-dismissible text-white custom_info" role="alert">'
+                                                + 'You have successfully purchased this card.'
+                                                +'</div>');                                                
 						});
 					}
                     if(status != "success"){

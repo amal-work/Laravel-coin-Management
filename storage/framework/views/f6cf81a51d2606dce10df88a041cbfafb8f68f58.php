@@ -48,8 +48,10 @@
 				</div>
 				<span class="nav-link-text ms-1">FAQ</span>
 			</a>
-		</li>	
+			<hr class="horizontal light">
+		</li>		
 	</ul>
+	
 	<!-- /.sidebar-menu -->
 </div>
 <!-- /.sidebar -->
