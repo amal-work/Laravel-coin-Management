@@ -6,9 +6,9 @@
       <title>Hustlers</title>
       <!-- Favicon -->
       <link rel="shortcut icon" href="<?php echo e(asset('user_assets/images/favicon.ico')); ?>" />
-      <link rel="stylesheet" href="<?php echo e(asset('user_assets/css/libs.min.css')); ?>">
-      <link rel="stylesheet" href="<?php echo e(asset('user_assets/css/coinex.css?v=1.0.0')); ?>">  
-        
+      <link rel="stylesheet" href="<?php echo e(asset('user_assets/css/libs.min.css')); ?>">      
+      <link rel="stylesheet" href="<?php echo e(asset('user_assets/css/login.css')); ?>">   
+
     </head>
     <body class="" data-bs-spy="scroll" data-bs-target="#elements-section" data-bs-offset="0" tabindex="0">
         <!-- loader Start -->

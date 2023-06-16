@@ -16,8 +16,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link rel="stylesheet" href="{{asset('user_assets/css/nucleo-svg.css')}}">        
         <link rel="stylesheet" href="{{asset('user_assets/css/material-dashboard.css?v=3.0.0')}}">
         <link rel="stylesheet" href="/plugins/select2/css/select2.min.css">
-        <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-        <link rel="stylesheet" href="{{asset('user_assets/css/custom.css')}}">
+        <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">              
+        
 
         <!-- jquery bootstrap data table -->
         <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
@@ -27,6 +27,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<link rel="stylesheet" href="{{asset('plugins/datatables-checkboxes/css/dataTables.checkboxes.css')}}">
 
         @yield('third_party_stylesheets')        
+        <link rel="stylesheet" href="{{asset('user_assets/css/custom.css')}}">
         @stack('page_css')
 
     </head>
@@ -54,82 +55,106 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
                 <div class="container-fluid py-1 px-3">  
                     <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                    <ul class="navbar-nav  ms-md-auto justify-content-end">
-                        <li class="nav-item d-flex align-items-center">
-                            <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank">
-                                <i class="material-icons opacity-10">payment</i>    
-                                <span class="user_money" style="margin-left:10px; font-weight:700;">
-                                     {{number_format(Auth::user()->money, 2, '.', ',')}}
-                                </span>
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item d-flex align-items-center">
+                        <ul class="navbar-nav  ms-md-auto justify-content-end">
+                            <li class="nav-item d-flex align-items-center">
+                                <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank">
+                                    <i class="material-icons opacity-10">payment</i>    
+                                    <span class="user_money" style="margin-left:10px; font-weight:700;">
+                                        {{number_format(Auth::user()->money, 2, '.', ',')}}
+                                    </span>
+                                </a>
+                            </li>
                             
-                            <a class="btn btn-outline-warning btn-sm mb-0 me-3 " target="_blank">
-                                <i class="material-icons opacity-10">payment</i>    
-                                <span class="user_cart_cnt" style="margin-left:10px; font-weight:700;">payment</i> 0</span>
-                            </a>
-                        </li>
-                        <li class="nav-item d-xl-none pe-3 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link p-0 text-body" id="iconNavbarSidenav">
-                                <div class="sidenav-toggler-inner">
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img 
-                                    @if (Auth::check() && Auth::user()->image != "")
-                                        src="{{Auth::user()->image}}"
-                                    @else
-                                        src="{{asset('user_assets/images/avatar.png')}}"
-                                    @endif 
-                                    class="avatar avatar-sm  me-3"
-                                />
-                            </a>
-                            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                                <li>
-                                    <a class="dropdown-item border-radius-md" href="{{route('user.mypage')}}">
-                                        <div class="d-flex py-1">
-                                            <div class="avatar avatar-sm bg-info  me-3  my-auto">
-                                                <i class="material-icons opacity-10">info</i>
-                                            </div>  
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-sm font-weight-normal mb-1">
-                                                    My Info
-                                                </h6>                                                
+                            <li class="nav-item d-flex align-items-center">
+                                
+                                <a class="btn btn-outline-warning btn-sm mb-0 me-3 " target="_blank">
+                                    <i class="material-icons opacity-10">payment</i>    
+                                    <span class="user_cart_cnt" style="margin-left:10px; font-weight:700;">payment</i> 0</span>
+                                </a>
+                            </li>                       
+                            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                                <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img 
+                                        @if (Auth::check() && Auth::user()->image != "")
+                                            src="{{Auth::user()->image}}"
+                                        @else
+                                            src="{{asset('user_assets/images/avatar.png')}}"
+                                        @endif 
+                                        class="avatar avatar-sm  me-3"
+                                    />
+                                </a>
+                                <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                                    <li>
+                                        <a class="dropdown-item border-radius-md" href="{{route('user.mypage')}}">
+                                            <div class="d-flex py-1">
+                                                <div class="avatar avatar-sm bg-info  me-3  my-auto">
+                                                    <i class="material-icons opacity-10">info</i>
+                                                </div>  
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="text-sm font-weight-normal mb-1">
+                                                        My Info
+                                                    </h6>                                                
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item border-radius-md" href="#"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">                                    
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none" style="display:none;">
-                                            @csrf
-                                        </form>
-                                        <div class="d-flex py-1">
-                                            <div class="avatar avatar-sm bg-primary  me-3  my-auto">
-                                                <i class="material-icons opacity-10">logout</i>
-                                            </div>  
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-sm font-weight-normal mb-1">
-                                                    Log out
-                                                </h6>                                                  
-                                                <p class="text-xs text-secondary mb-0">
-                                                    <i class="fa fa-clock me-1"></i>
-                                                    {{ Auth::user()->str_id }}: Join Date: {{ Auth::user()->created_at->format('Y-m-d') }}
-                                                </p>                                            
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item border-radius-md" href="#"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">                                    
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none" style="display:none;">
+                                                @csrf
+                                            </form>
+                                            <div class="d-flex py-1">
+                                                <div class="avatar avatar-sm bg-primary  me-3  my-auto">
+                                                    <i class="material-icons opacity-10">logout</i>
+                                                </div>  
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="text-sm font-weight-normal mb-1">
+                                                        Log out
+                                                    </h6>                                                  
+                                                    <p class="text-xs text-secondary mb-0">
+                                                        <i class="fa fa-clock me-1"></i>
+                                                        {{ Auth::user()->str_id }}: Join Date: {{ Auth::user()->created_at->format('Y-m-d') }}
+                                                    </p>                                            
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>     
+                            <li class="nav-item d-xl-none pe-3 d-flex align-items-center">
+                                <a href="javascript:;" class="nav-link p-0 text-body" id="iconNavbarSidenav">
+                                    <div class="sidenav-toggler-inner">
+                                        <i class="sidenav-toggler-line"></i>
+                                        <i class="sidenav-toggler-line"></i>
+                                        <i class="sidenav-toggler-line"></i>
+                                    </div>
+                                </a>
+                            </li>                   
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl mobile-navbar2" id="navbarBlur" navbar-scroll="true">
+                <div class="container-fluid py-1 px-3">  
+                    <div class="collapse navbar-collapse mt-sm-0 me-md-0 me-sm-4" id="navbar">
+                        <ul class="navbar-nav  ms-md-auto justify-content-around">
+                            <li class="nav-item d-flex align-items-center">
+                                <a class="nav-link text-white active bg-gradient-primary nav-text-color" href="{{route('user.card')}}">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">paid</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Buy Cards</span>
+                                </a>
+                            </li>                            
+                            <li class="nav-item d-flex align-items-center">                                
+                                <a class="nav-link text-white active bg-gradient-primary nav-text-color" href="{{ route('user.credit') }}">
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                        <i class="material-icons opacity-10">payment</i>
+                                    </div>
+                                    <span class="nav-link-text ms-1">Get Credits</span>
+                                </a>
+                            </li>                                              
+                        </ul>
                     </div>
                 </div>
             </nav>

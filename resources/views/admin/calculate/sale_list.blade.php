@@ -26,7 +26,7 @@
                     <div class="card-header p-0 pt-1 border-bottom-0">
                         <!-- <ul class="nav float-right">
                             <li class="pull-right float-right pr-1 pt-1" style="">
-                                <a href="javascript:void(0)" class="btn btn-success btn-sm btnAdd" >새로 등록</a>
+                                <a href="javascript:void(0)" class="btn btn-success btn-sm btnAdd" >new register</a>
                             </li>
                         </ul> -->
                     </div>
@@ -66,6 +66,9 @@
             columns: [
                 {title: "No", data: 'DT_RowIndex', name: 'DT_RowIndex', 'render' : null, orderable  : false, width: '50px', 'searchable' : false, 'exportable' : false, 'printable'  : true},
                 {title: "User", data: 'user_info', name: 'user_info', },
+                {title: "Card Number", data: 'card_number', name: 'card_number'},
+                {title: "Vote", data: 'like_dislike', name: 'like_dislike'},
+                {title: "Ref/No_Ref", data: 'ref_or_noref', name: 'ref_or_noref'},
                 {title: "Info", data: 'info', name: 'info', orderable: false, searchable: false, className: "text-center"},
                 {title: "Date", data: 'created_at', name: 'created_at',  orderable: false, searchable: false, className: "text-center"},
             ],

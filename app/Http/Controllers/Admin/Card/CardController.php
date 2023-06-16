@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Card;
 use App\Models\Country;
 use App\Models\State;
+use App\Models\Discount;
+use App\Models\CardValue;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Support\Facades\Hash;
@@ -44,7 +46,7 @@ class CardController extends Controller
 		
         if ($request->ajax()) {
             $cards = Card::where('is_purchased', 0)
-            ->where('exp_date','>', \DB::raw('NOW()'))
+            // ->where('exp_date','>', \DB::raw('NOW()'))
             ->orderBy('created_at', 'DESC');
 
             return DataTables::of($cards)
@@ -85,8 +87,8 @@ class CardController extends Controller
                            	$query2->whereBetween(
 									'exp_date',
 									[
-										Carbon::now()->startOfMonth(),
-										Carbon::now()->endOfMonth()
+										new Carbon('first day of next month'),
+										new Carbon('last day of next month'),
 									]
 								);
                         }else if($request->get('category') == "almostfree"){
@@ -229,5 +231,49 @@ class CardController extends Controller
         $error_cnt = count($error_val);
         $success_cnt = $input_cnt - $error_cnt;//
         return response()->json(["status" => "success", "data" => compact('input_cnt', 'success_cnt', 'error_cnt', )]);
+    }
+
+    //display the card's value
+    public function card_value_edit()
+    {
+        $data = CardValue::where('flag', 1)->first();
+        return view('admin.card.almost_free', compact('data'));
+    }
+    //display the card's value
+    public function mega_card_edit()
+    {
+        $data = CardValue::where('flag', 0)->first();
+        return view('admin.card.mega_discount', compact('data'));
+    }
+    
+    //update the card's value(1: almost free, 0: mega discount)
+    public function card_change($id, Request $request)
+    {
+        $obj = CardValue::where('flag', $id)->first();
+        $obj->price = $request->charge;        
+        $obj->save();
+        if(($obj->save())&& ($id==1)){
+            $cards = Card::where('is_purchased', 0)				
+                ->where('is_del', "=", 1)
+				->orderBy('created_at', 'DESC')->update([
+                    'price' => $request->charge
+                ]);        
+            return redirect('admin/card/card_value_edit')->with('success','Almost Free Card Value Updated!');
+        }else if(($obj->save())&& ($id==0)){ //mega discount value
+            $cards = Card::where('is_purchased', 0)				
+                ->whereBetween(
+                'exp_date',
+                    [
+                        new Carbon('first day of next month'),
+                        new Carbon('last day of next month'),
+
+                    ]
+                )
+				->orderBy('created_at', 'DESC')->update([
+                    'price' => $request->charge
+                ]);
+            
+            return redirect('admin/card/mega_card_edit')->with('success','Mega Discount Value Updated!');
+        }            
     }
 }

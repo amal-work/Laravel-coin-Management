@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        <div class="alert alert-success alert-dismissible text-white" role="alert">
+        <div class="alert bussiness_bar alert-dismissible text-white" role="alert">
             <h5 class="text-white">Your FAQ Guide to Success</h5>
             <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>

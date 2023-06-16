@@ -28,8 +28,12 @@
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
 }
+
 .alert{  
   text-align: center;
+}
+.navbar-nav .nav-text-color{
+  color: white !important;
 }
 .card-header > .border-radius-lg h6{
   color: white;
@@ -45,6 +49,9 @@
 .btn-primary, .btn-warning{
   background-image: linear-gradient(195deg, #306844 0%, #455b55 100%);  
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(30,69,62, 0.4) !important;
+}
+.bg-gradient-darken-green{
+  background-image: linear-gradient(195deg, #013220 0%, #455b55 100%);
 }
 .badge.bg-info {
   background-image: linear-gradient(195deg, #306844 0%, #455b55 100%);
@@ -64,6 +71,9 @@
 #Table tr td{
   padding-left: 28px;
 }
+.buy_card_box .align-items-center{
+  justify-content: center;
+}
 #cardTable.align-items-center td{
   padding-left: 24px;
 }
@@ -80,6 +90,10 @@
 }
 .page-link:focus{
   box-shadow: 0 0 0 0.2rem rgba(48, 104, 68, 0.25);
+}
+.container-fluid .bussiness_bar{
+  background-image: linear-gradient(195deg, #42424a 0%, #191919 100%);
+  opacity: 0.9;
 }
 table.dataTable>tbody>tr.child ul.dtr-details{
   width: 100%;
@@ -116,4 +130,94 @@ hr.horizontal.light{
 }
 .custom-alert p a:hover, .custom-alert p a:visited, .custom-alert p a:focus{
   color: #FB8C00  ;
+}
+.card .card-body .btnBuyCard{
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+}
+.card .card-body .total-checked{
+  padding-top: 2px;
+  margin-left: 10px !important;
+}
+.card-header.info-border{
+  border-radius: 10px;
+}
+
+table#cardTable {
+  /* table-layout: fixed;  */
+  width: 100% !important;
+}
+td{
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+#thumbup, #thumbdown{
+  /* background-image: url('../images/cards/thumbup.png'); */
+  border: none;
+  background: none;
+  padding-right: 0;
+  padding-left: 4px;  
+}
+#thumbup:hover, #thumbdown:hover{
+  /* background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+	background-color:#72b352; */
+}
+#thumbup:active, #thumbdown:active{
+  position:relative;
+	top:1px;
+}
+td>span{
+  margin-left: 5px;
+}
+.btnPopup{
+  box-shadow: 2px 4px 0px 0px #3e7327;
+	background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+	background-color:#77b55a;
+	border-radius:18px;
+	border:1px solid #4b8f29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:1px 2px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #5b8a3c;
+}
+table.table-bordered.dataTable td{
+  text-align: center;
+}
+
+#tradingTable td .btn-warning, #tradingTable td .btn-warning:hover{
+  color: white;
+}
+.mobile-navbar2{
+  display: none;
+} 
+
+@media (max-width: 765px)  {
+ .mobile-navbar2{
+    display: block;
+ } 
+ .navbar .nav-link{
+    border-radius: 10px;
+ }
+ .btn-wrap{
+    /* display: flex; */
+  }
+  .btn-item:first-child{
+    /* margin-right: 10px; */
+  }
+  #cardTable_wrapper #cardTable .is-image-cell{
+    display: flex;
+    justify-content: center;
+  }
+  .is-image-cell img{    
+    width: 18% !important;
+    border: 1px solid #455b55;
+    height: auto!important;
+    border-radius: 50%;
+    height: 60px !important;    
+    padding: 4px;
+  }
 }

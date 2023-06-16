@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Notice;
 use App\Models\CardSell;
+use App\Models\Test;
 
 use Yajra\DataTables\DataTables;
 
@@ -48,8 +49,8 @@ class NoticeController extends Controller
                 ->make(true);
         }
 
-        $ntotalsUsers = User::count();
-        $activeUsers = ceil($ntotalsUsers * rand(1, 2)/10);
+        $ntotalsUsers = Test::first()->count;
+        $activeUsers = ceil($ntotalsUsers * mt_rand(400, 1000) / 100000);
         $nCardsSold = CardSell::count();
         return view('user.contact.notice_list', compact('title', 'ntotalsUsers', 'activeUsers', 'nCardsSold'));
     }

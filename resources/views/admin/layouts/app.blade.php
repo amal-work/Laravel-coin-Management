@@ -43,7 +43,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
         <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
         <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
-
+        <link rel="stylesheet" href="{{asset('admin_assets/css/custom_admin.css')}}">
         <script type="text/javascript" src="/plugins/angular.min.js"></script>
         <script type="text/javascript" src="/plugins/moment.js"></script>
         <script type="text/javascript" src="/plugins/numeral.min.js"></script>

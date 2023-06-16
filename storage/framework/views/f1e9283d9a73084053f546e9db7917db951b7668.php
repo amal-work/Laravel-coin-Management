@@ -3,130 +3,106 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
     <div class="row">
-        <div class="col-lg-4">
-            <div class="card my-2">
-                <div class="card-header p-3">
+        <div class="col-lg-12">
+            <div class="card my-4 "> 
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="alert bg-gradient-primary shadow-primary alert-dismissible text-white" role="alert">
                         <h5 class="text-white">Turn Pocket Change into a Fortune</h5>
-                        <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
-                    <h6 class="text-center text-sm ">
-                        Unbeatable Offer: Save <?php echo e($discount->discount); ?>% with No Refund Purchase (Buy NoRef)
-                    </h6>
-                    <h6 class="text-center text-sm ">
-                        Or get 100% Refund for Declined Cards, Excluding Checking Fee! (Buy Ref)
-                    </h6>
-                </div>
-                <div class="card-body p-3">
+                    <div class="d-flex align-items-center">
+                        <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                            <i class="material-icons opacity-10"> thumb_up_off_alt </i>
+                        </div>
+                        <div class="ms-3">
+                            <p class="text-sm mb-0 text-capitalize font-weight-normal">Notification</p>
+                            <h6 class="font-weight-bolder mb-0"> Unbeatable Offer: Save <?php echo e($discount->discount); ?>% with No Refund Purchase (Buy NoRef) </h6>
+                            <h6>Or get 100% Refund for Declined Cards, Excluding Checking Fee! (Buy Ref)</h6>
+                        </div>
+                    </div>                    
+                </div>                
+                <hr class="dark horizontal my-0">
+                <div class="card-body p-3 pb-1">
+                    <div class="row">                                                
+                        <div class="col-md-3">
+                            <div class="input-group input-group-static mb-2">
+                                <label>Country</label>
+                                <select name="country" id="country" class="form-control select2bs4 " style="font-size:10px !important; width: 100%;"  >
+                                    <option value="">All</option>
+                                    <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($country->country); ?>"><?php echo e($country->country); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group input-group-static mb-2">
+                                <label>State</label>
+                                <select name="state" id="state" class="form-control select2bs4 " style="font-size:10px !important; width: 100%;"  >
+                                    <option value="">All</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group input-group-static mb-2">
+                                <label>City</label>
+                                <select name="city" id="city" class="form-control select2bs4 " style="font-size:10px !important; width: 100%;"  >
+                                    <option value="">All</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group input-group-static mb-2">
+                                <label>Categroy</label>
+                                <select name="category" id="category" class="form-control select2bs4 " style="font-size:10px !important; width: 100%;"  >
+                                    <option value="">All</option>
+                                    <option value="megadiscount" >[MEGA DSICOUNT]Expire Soon</option>
+                                    <option value="almostfree">Almost Free</option>
+                                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($category->category); ?>" ><?php echo e($category->category); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
-                        <div class="col-lg-6 col-sm-6 col-6">
-                            <a href="javascript:void(0)" class="btn bg-gradient-success w-100 mb-0 toast-btn btnBuyCard" >Buy Selected Cards</a>
+                        <div class="col-md-3">
+                            <div class="input-group input-group-static">
+                                <label>Type</label>
+                                <select name="type" id="type" class="form-control select2bs4 " style="font-size:10px !important; width: 100%;"  >
+                                    <option value="">All</option>
+                                    <option value="3">AMERICAN_EXPRESS</option>
+                                    <option value="5">MASTER_CARD</option>
+                                    <option value="4">VISA</option>
+                                    <option value="6">DISCOVER</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-lg-6 col-sm-6 col-6 pt-1">
-                            <span class="total-checked text-success pr-3" style="font-weight: bold;font-size: 22px;"></span>
+                        <div class="col-md-2">
+                            <div class="input-group input-group-static mb-2">
+                                <label>Bin</label>
+                                <input type="text" class="form-control form-control-sm" id="bin" name="bin" value="">
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-8 mb-4 ">
-            <div class="card my-2">
-            <div class="card-header p-3 pt-2">
-                <div class="icon icon-lg icon-shape bg-gradient-primary shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                    <i class="material-icons opacity-10">search</i>
-                </div>
-                <div class="text-end pt-1">
-                    <!-- <p class="text-sm mb-0 text-capitalize">Search</p>   -->
-                </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3 pb-1">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group input-group-static my-2">
-                            <label>Categroy</label>
-                            <select name="category" id="category" class="form-control select2bs4 " style="font-size:10px !important; width: 100%;"  >
-                                <option value="">==All==</option>
-                                <option value="megadiscount" >[MEGA DSICOUNT]Expire Soon</option>
-                                <option value="almostfree">Almost Free</option>
-
-                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($category->category); ?>" ><?php echo e($category->category); ?></option>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </select>
+                        <div class="col-md-2">
+                            <div class="input-group input-group-static mb-2">
+                                <label>Zip</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" name="zip" value="">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group input-group-static my-2">
-                            <label>Bin</label>
-                            <input type="text" class="form-control form-control-sm" id="bin" name="bin" value="">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group input-group-static mb-2">
-                            <label>Country</label>
-                            <select name="country" id="country" class="form-control select2bs4 " style="font-size:10px !important; width: 100%;"  >
-                                <option value="">==All==</option>
-
-                                <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($country->country); ?>"><?php echo e($country->country); ?></option>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group input-group-static mb-2">
-                            <label>State</label>
-                            <select name="state" id="state" class="form-control select2bs4 " style="font-size:10px !important; width: 100%;"  >
-                                <option value="">==All==</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group input-group-static mb-2">
-                            <label>City</label>
-                            <select name="city" id="city" class="form-control select2bs4 " style="font-size:10px !important; width: 100%;"  >
-                                <option value="">==All==</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group input-group-static mb-2">
-                            <label>Zip</label>
-                            <input type="text" class="form-control form-control-sm" id="zip" name="zip" value="">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group input-group-static">
-                            <label>Type</label>
-                            <select name="type" id="type" class="form-control select2bs4 " style="font-size:10px !important; width: 100%;"  >
-                                <option value="">==All==</option>
-                                <option value="3">AMERICAN_EXPRESS</option>
-                                <option value="5">MASTER_CARD</option>
-                                <option value="4">VISA</option>
-                                <option value="6">DISCOVER</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group input-group-static mt-4">
-                            <button class="btn btn-sm btn-primary btnSearch float-right">Search</button>
+                        
+                        <div class="col-md-5">
+                            <div class="input-group input-group-static mt-4">
+                                <button class="btn btn-sm btn-primary btnSearch float-right">Search</button>
+                                <a href="javascript:void(0)" class="btn bg-gradient-success btnBuyCard" >Buy Selected Cards</a>    
+                                <span class="total-checked text-success pr-3" style="font-weight: bold;font-size: 22px;"></span>                            
+                            </div>                            
+                            
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
-        </div>
+        </div>        
     </div>
-
     <div class="row">
         <div class="col-12">
             <div class="card my-2">
@@ -185,30 +161,30 @@
             scrollY: "640px",
             pageLength: 10,                        
 			searching: false,
-            autoWidth: false,
-            scrollX: true,            
-            fixedColumns: false,
-            responsive: {
-                details: {
-                    display: $.fn.dataTable.Responsive.display.childRowImmediate,
-                    type: "none",
-                    target: ""
-                }
-            },
-            responsive: {
-                details: {
-                    display: $.fn.dataTable.Responsive.display.childRowImmediate,
-                    type: "none",
-                    target: ""
-                }
-            },
+            autoWidth: true,
+            "bInfo" : false,                 
+                               
+            // responsive: {
+            //     details: {
+            //         display: $.fn.dataTable.Responsive.display.childRowImmediate,
+            //         type: "none",
+            //         target: ""
+            //     },
+            //     responsive: true
+            // },
+            // fixedColumns: true,
+            // "fixedHeader": {
+            //     "header": false,
+            //     "footer": false
+            // },
+           
             language: {
                 paginate: {
                 next: '&#8594;', // or '→'
                 previous: '&#8592;' // or '←' 
                 }
             },
-            // fixedHeader: true,
+            
             ajax: {
                 url: "<?php echo e(route('user.card')); ?>",
                 data: function ( d ) {
@@ -224,18 +200,19 @@
             columns: [
                 // {title: "No", data: 'DT_RowIndex', name: 'DT_RowIndex', 'render' : null, orderable  : false, 'searchable' : false, 'exportable' : false, 'printable'  : true},
                 {title: '<input type="checkbox" class="checkAll">', data: 'check', name: 'check', 'render' : null, orderable  : false, 'searchable' : false},
-                {title: "Type", data: 'type', name: 'type', width:"40px", orderable:false, searchable: false, },
+                {title: "Type", data: 'type', name: 'type', orderable:false, searchable: false, },
                 {title: "Bin", data: 'bin', name: 'bin'},
                 {title: "Exp Date", data: 'exp_date', name: 'exp_date'},
                 {title: "Category", data: 'category', name: 'category'},
                 {title: "Country", data: 'country', name: 'country'},
-                {title: "State", data: 'state', name: 'state'},
+                // {title: "State", data: 'state', name: 'state'},
                 {title: "City", data: 'city', name: 'city'},
                 {title: "Zip", data: 'zip', name: 'zip'},
                 {title: "Action/Result", data: 'action', name: 'action', orderable:false, searchable: false, className: "text-center"},
             ],
             order: [2, 'asc'],
-            responsive: true, lengthChange: true,
+            responsive: true, 
+            lengthChange: true,
             buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
         });
         table.columns.adjust().draw();
@@ -297,8 +274,7 @@
         //     window.open('/admin/coin/edit/' + coinId, '정보 수정', 'scrollbars=1, resizable=1, width=1000, height=620');
         //     return false;
         // });
-        $('body').on('click', '.btnSearch', function () {
-            console.log('btn search');
+        $('body').on('click', '.btnSearch', function () {            
             refreshTable();
         });
 
@@ -342,11 +318,12 @@
         $('#country').change(function(){
 
             var country = $(this).val();
-            $('#state').html('<option value="">==All==</option>');
-            $('#city').html('<option value="">==All==</option>');
+            $('#state').html('<option value="">All</option>');
+            $('#city').html('<option value="">All</option>');
             if(country == 0) {
                 return;
             }
+            console.log(country);
             var action = '/search_state/'+country;
             $.ajax({
                 url: action,
@@ -355,7 +332,7 @@
                 dataType: 'json',
                 success: function ({status, data}) {
                     if(status == "success"){
-                        $('#state').html('<option value="">==All==</option>');
+                        $('#state').html('<option value="">All</option>');
                         data.forEach( (element, index) => {
                             $('#state').append(`<option value="${element.state}">
                                     ${element.state}
@@ -368,10 +345,11 @@
                 }
             });
         });
+
         $('#state').change(function(){
 
             var state = $(this).val();
-            $('#city').html('<option value="">==All==</option>');
+            $('#city').html('<option value="">All</option>');
             if(state == 0) {
                 return;
             }
@@ -383,7 +361,7 @@
                 dataType: 'json',
                 success: function ({status, data}) {
                     if(status == "success"){
-                        $('#city').html('<option value="">==All==</option>');
+                        $('#city').html('<option value="">All</option>');
                         data.forEach( (element, index) => {
                             $('#city').append(`<option value="${element.city}">
                                     ${element.city}
@@ -402,8 +380,7 @@
 			$('.total-checked').empty();
         }
 
-        $('body').on('click', '.btnBuyCard', function () {
-            console.log('buy card button');
+        $('body').on('click', '.btnBuyCard', function () {            
             //var form = $('#divProductForm');
             var table = $('#cardTable').DataTable();
             var products = "";

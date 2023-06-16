@@ -40,18 +40,39 @@ class SaleController extends Controller
             return DataTables::of($schedules)
             ->addIndexColumn()
                 ->addColumn('user_info', function ($row) {
-                    return $row->user->name;
-                    
+                    return $row->user->name;                    
                 })
-                // ->addColumn('action', function ($row) {
+                ->addColumn('card_number', function ($row) {
+                    return $row->card->card_number;                    
+                })
+                ->editColumn('like_dislike', function ($row) {
+                    // return $row->vote;                    
+                    if($row->vote == 1){
+                        $type = '<img alt="thumbnail" style="width:31px; height:30px; " src="' . asset('user_assets/images/cards/') . '/thumbup.png">';     
+                    }else{
+                        $type ='<img alt="thumbnail" style="width:31px; height:30px; text-align:center" src="' . asset('user_assets/images/cards/') . '/thumbdown.png">';
+                    }
+                        
+                    return $type;
+                })
+                ->editColumn('ref_or_noref', function ($row) {
+                    // return $row->vote;                    
+                    if($row->btn_ref == 1){
+                        $type = '<span class="badge badge-sm btn-success">Buy Ref</span>';
+                    }else{
+                        $type = '<span class="badge badge-sm btn-warning">Buy No Ref</span>';
+                    }                        
+                    return $type;  
+                })
+                ->addColumn('action', function ($row) {
                     
-                //     // $btn = '<button type="button" data-id="' . $row->id . '" style="font-size:10px !important;" class="btn btn-xs btn-primary btnEdit">수정</button>';
-                //     // $btn .= '<button type="button" data-id="' . $row->id . '" style="font-size:10px !important;" class="ml-1 btn btn-xs btn-danger btnDelete">삭제</button>';
-                //     // $btn = '<button type="button" data-state="1" data-id="' . $row->id . '" style="font-size:10px !important;" class="ml-1 btn btn-xs btn-info btnState">정산</button>';
-                //     $btn = '<button type="button" data-state="2" data-id="' . $row->id . '" style="font-size:10px !important;" class="ml-1 btn btn-xs btn-warning btnState">적특</button>';
-                //     return $btn;
-                // })
-                ->rawColumns(['user_info'])
+                    // $btn = '<button type="button" data-id="' . $row->id . '" style="font-size:10px !important;" class="btn btn-xs btn-primary btnEdit">수정</button>';
+                    // $btn .= '<button type="button" data-id="' . $row->id . '" style="font-size:10px !important;" class="ml-1 btn btn-xs btn-danger btnDelete">삭제</button>';
+                    // $btn = '<button type="button" data-state="1" data-id="' . $row->id . '" style="font-size:10px !important;" class="ml-1 btn btn-xs btn-info btnState">정산</button>';
+                    $btn = '<button type="button" data-state="2" data-id="' . $row->id . '" style="font-size:10px !important;" class="ml-1 btn btn-xs btn-warning btnState">적특</button>';
+                    return $btn;
+                })
+                ->rawColumns(['user_info', 'like_dislike', 'ref_or_noref'])
                 ->make(true);
         }
         return view('admin.calculate.sale_list', compact('title'));

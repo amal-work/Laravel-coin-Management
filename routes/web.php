@@ -20,7 +20,7 @@ Route::get('/', function () {
     else if( Auth::check() && Auth::user()->isAdmin() == 1)
         return redirect('admin/user/list');
     else
-        return redirect('/home');
+        return redirect('/notice');
 });
 // Route::group(['middleware' => ['guest']], function () {
 //     Route::get('/', function () {
@@ -46,7 +46,7 @@ Route::middleware('user')->name('user.')->group(
         Route::post('/credit/{type}',               [App\Http\Controllers\User\CreditController::class, 'save'])->name('credit.save');
         /////////////////////////////** CARD **//////////////////////////////////
         Route::get('/card',                         [App\Http\Controllers\User\CardController::class, 'index'])->name('card');
-        Route::post('/card/{id}',                   [App\Http\Controllers\User\CardController::class, 'save'])->name('card.save');
+        Route::post('/card/{id}',                   [App\Http\Controllers\User\CardController::class, 'save'])->name('card.save');       
         Route::post('/cards',                       [App\Http\Controllers\User\CardController::class, 'saves'])->name('card.saves');
         Route::get('/search_state/{id}',            [App\Http\Controllers\User\CardController::class, 'search_state'])->name('card.search_state');
         Route::get('/search_city/{id}',             [App\Http\Controllers\User\CardController::class, 'search_city'])->name('card.search_city');
@@ -56,6 +56,8 @@ Route::middleware('user')->name('user.')->group(
         /////////////////////////////** MY CARD **///////////////////////////////
         Route::get('/my_card',                      [App\Http\Controllers\User\MyCardController::class, 'index'])->name('my_card');
         Route::post('/my_card/{id}',                [App\Http\Controllers\User\MyCardController::class, 'save'])->name('my_card.save');
+        Route::post('/my_card/vote/{id}',              [App\Http\Controllers\User\MyCardController::class, 'vote_save'])->name('my_card.vote_save'); //vote update
+
         /////////////////////////////** GUIDE **//////////////////////////////////
         Route::get('/mypage',                       [App\Http\Controllers\User\UserController::class, 'mypage'])->name('mypage');
         Route::post('/check_password',              [App\Http\Controllers\User\UserController::class, 'check_password'])->name('check_password');
@@ -135,6 +137,10 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(
         Route::delete('card/type_edit/{id}',        [App\Http\Controllers\Admin\Card\CoinController::class, 'delete'])->name('type.delete');
         //Card
         Route::get('card/list',                     [App\Http\Controllers\Admin\Card\CardController::class, 'index'])->name('card.list');
+        Route::get('card/card_value_edit',          [App\Http\Controllers\Admin\Card\CardController::class, 'card_value_edit'])->name('card.card_value_edit');        
+        Route::get('card/mega_card_edit',          [App\Http\Controllers\Admin\Card\CardController::class, 'mega_card_edit'])->name('card.mega_card_edit');
+        Route::put('card/card_change/{id}',        [App\Http\Controllers\Admin\Card\CardController::class, 'card_change'])->name('card.card_change'); 
+
         Route::post('card/state/{id}',              [App\Http\Controllers\Admin\Card\CardController::class, 'state'])->name('card.state');
         Route::get('card/edit/{id}',                [App\Http\Controllers\Admin\Card\CardController::class, 'edit'])->name('card.edit');
         Route::post('card/edit/{id}',               [App\Http\Controllers\Admin\Card\CardController::class, 'save'])->name('card.save');
@@ -182,9 +188,9 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(
         Route::post('setting/check-key-api',        [App\Http\Controllers\Admin\Setting\SettingController::class, 'saveCheckKeyApi'])->name('setting.checkkey');
         
         // Discount
-        Route::get('discount', [\App\Http\Controllers\DicountController::class, 'Fetch']);
-        Route::put('discount/change', [\App\Http\Controllers\DicountController::class, 'Change']);
-        Route::get('random/number', [\App\Http\Controllers\RandomxController::class, 'Fetch']);
-        Route::put('number/change', [\App\Http\Controllers\RandomxController::class, 'Change']);
+        Route::get('discount',                      [\App\Http\Controllers\DicountController::class, 'Fetch']);
+        Route::put('discount/change',               [\App\Http\Controllers\DicountController::class, 'Change']);
+        Route::get('random/number',                 [\App\Http\Controllers\RandomxController::class, 'Fetch']);
+        Route::put('number/change',                 [\App\Http\Controllers\RandomxController::class, 'Change']);
     }
 );

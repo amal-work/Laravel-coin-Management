@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Houstlers</title>
+    <title>Hustlers</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('user_assets/images/favicon.ico') }}" />
-    <!-- <link rel="stylesheet" href="{{ asset('user_assets/css/libs.min.css') }}"> -->
-    <link rel="stylesheet" href="{{ asset('user_assets/css/coinex.css?v=1.0.0') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('user_assets/css/libs.min.css') }}"> -->    
+    <link rel="stylesheet" href="{{asset('user_assets/css/login.css')}}"> 
     <script src="/plugins/jquery/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
@@ -64,7 +64,7 @@
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control" name="name"
                                                             id="name" placeholder="">
-                                                        <label for="name">Name</label>
+                                                        <label for="name">Username</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 mb-4">

@@ -1,0 +1,11 @@
+table.table-bordered.dataTable td{
+  text-align: center;
+}
+
+#tradingTable td .btn-warning, #tradingTable td .btn-warning:hover{
+  color: white;
+}
+#tradingTable .btn-primary, #tradingTable .btn-warning{
+  background-image: linear-gradient(195deg, #306844 0%, #455b55 100%);  
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(30,69,62, 0.4) !important;
+}

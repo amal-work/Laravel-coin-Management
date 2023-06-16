@@ -47,11 +47,21 @@ class MyCardController extends Controller
                     $btn = '<span style="width:50px;" class="badge '.$badge.'">'.$status.'</span>';
                     return $btn;
                 })
+                ->editColumn('vote', function ($row) {		
+                    // if($row->vote == 1){
+                        
+                    // }else{
+                    //     $type = '';
+                    // }
+                    $type = '<button id="thumbup" data-type="1"><img alt="thumbnail" style="width:31px; height:30px;" src="' . asset('user_assets/images/cards/') . '/thumbup.png"></button>';
+                    $type.='<button id="thumbdown" data-type="0"><img alt="thumbnail" style="width:31px; height:30px;" src="' . asset('user_assets/images/cards/') . '/thumbdown.png"></button>';
+                    return $type;
+                })            
                 ->editColumn('created_at', function($row){ 
                     $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $row->created_at)->format('d-m-Y'); 
                     return $formatedDate; 
                 })
-                ->rawColumns(['info', 'action'])
+                ->rawColumns(['info', 'action', 'vote'])
                 ->make(true);
         }
         return view('user.my_card.list', compact('title'));
@@ -89,4 +99,19 @@ class MyCardController extends Controller
         // $card->save();
         // return response()->json(["status" => "success", "data" => 'You have successfully purchased this card.']);
     }
+
+    /**
+	 * Save the card's vote.
+	 *
+	 * @return \Illuminate\Contracts\Support\Renderable
+	 */
+	public function vote_save($id, Request $request){   
+		$cardSell = CardSell::find($id);
+        $cardSell->vote = intval($request->voteType);
+        
+        if($cardSell->save())
+            return response()->json(["status" => "success", "data" => 'You are succeed to set Like/Dislike feedback!']);
+        else    
+            return response()->json(["status" => "error", "data" => 'You failed to add Like/Dislike feedback!']);
+	}
 }

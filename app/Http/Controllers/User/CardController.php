@@ -39,16 +39,35 @@ class CardController extends Controller
 	{
 		$discount = Discount::all()->first();
 		$title = "Buy Cards";
-		$delete_exp_date = Card::where('exp_date', '<', \DB::raw('NOW()'))->update([
-			'is_del' => 1
+	
+		// $start    = (new DateTime($now->format('Y-m-d')))->modify('first day of this month');
+        // $end      = (new DateTime(($now->addMonths($futureM))->format('Y-m-d')))->modify('first day of next month');
+		// $next_month = Carbon::create(Carbon::now()->year, Carbon::now()->month+1, )
+		
+		$before_start = new Carbon('first day of last month');
+		$before_end = new Carbon('last day of last month');		
+
+		$next_start = new Carbon('first day of next month');
+		$next_end = new Carbon('last day of next month');		
+
+		Card::where('exp_date', '<', $before_end)->update([
+			'is_del' => 1,
+			'category' => "Almost Free"
 		]);
+
+		Card::where('exp_date', '<', $next_end)
+			  ->where('exp_date', '>', $next_start)->update([			
+			'category' => "MEGA DISCOUNT"
+		]);		
+
+		//dd(Carbon::now(), Carbon::now()->addDays(30));
 		$countries = Card::where('is_del', 0)->where('is_purchased', 0)->groupBy('country')->select('country')->get();
 		$categories = Card::where('is_del', 0)->where('is_purchased', 0)->groupBy('category')->select('category')->get();
 		// $bins = Card::where('is_del', 0)->where('is_purchased', 0)->groupBy('card_number')->select(\DB::raw('SUBSTRING(card_number, 1, 4) as bin'))->get();
 
 		if ($request->ajax()) {
 			$cards = Card::where('is_purchased', 0)
-				->where('exp_date', '>', \DB::raw('NOW()'))
+				// ->where('exp_date', '>', \DB::raw('NOW()'))
 				->orderBy('created_at', 'DESC');
 			// $a =Card::whereBetween('exp_date', [now()->startOfMonth(), now()->endOfMonth()])
 			// 	->orderBy('exp_date', 'asc')
@@ -132,15 +151,19 @@ class CardController extends Controller
 								$query2->whereBetween(
 									'exp_date',
 									[
-										Carbon::now()->startOfMonth(),
-										Carbon::now()->endOfMonth()
+										new Carbon('first day of next month'),
+										new Carbon('last day of next month'),
+
 									]
 								);
 							} else if ($request->get('category') == "almostfree") {
 								$query2->where('is_del', "=", 1);
 							} else {
-								$query2->where('category', 'like', '%' . $request->get('category') . '%');
+								$query2->where('category', 'like', '%' . $request->get('category') . '%');								
 							}
+						})
+						->when($request->get('category') == "", function ($query2) use ($request) {
+							$query2->where('is_del', "<>", 1);
 						})
 						->when($request->get('bin') != "", function ($query2) use ($request) {
 							$query2->where('card_number', 'like',  $request->get('bin') . '%');
@@ -179,15 +202,17 @@ class CardController extends Controller
 		$cardprice = 0;
 		$totalPrice = 0;
 		$feeprice = 0;
+		$btnRef = 0;
 
-
-		if ($buyType == 0) {
+		if ($buyType == 0) { //Button name is Buy No REF
 			$cardprice = $card->price * (1 - ($discount->discount / 100));
 			$totalPrice = $cardprice;
-		} else {
+			$btnRef = 0;
+		} else {//Button name is Buy REF.
+			$btnRef = 1;
 			$cardinfo = $card->card_number . '|' . date('n|y', strtotime($card->exp_date)) . '|' . $card->cvv;
 			$cardprice = $card->price;
-			if ($checkOption == 1) {
+			if ($checkOption == 1) {//checkbox is checked
 				$feeprice = floatval(array_key_exists('chk_cards_buy', $setting_prices['check_buycard']) ? $setting_prices['check_buycard']['chk_cards_buy'] : 0);
 				$totalPrice = $cardprice + $feeprice;
 				if ($user->money < $feeprice || $user->money < $totalPrice) {
@@ -202,7 +227,8 @@ class CardController extends Controller
 					$totalPrice = $feeprice;
 					$user->money = $user->money - $totalPrice;
 					$user->save();
-					$card->is_del = 1;
+					$card->is_del = 1;  ///category is amlost free !!
+					$card->category = "Almost Free";
 					$card->save();
 					//$card->update(['is_del' => 1]);
 					return response()->json(["status" => "dead card", "data" => 'DEAD CARD. Your account will be charged a $' . number_format($totalPrice, 1) . ' check fee.', 'fee' => $totalPrice, 'msg' => 'Dead card', 'result' => $result]);
@@ -212,7 +238,7 @@ class CardController extends Controller
 					$user->save();
 					return response()->json(["status" => "dead card", "data" => 'DEAD CARD. Your account will be charged a $' . number_format($totalPrice, 1) . ' check fee.', 'fee' => $totalPrice, 'msg' => 'Error card', 'result' => $result]);
 				}
-			} else {
+			} else {//checkbox is unchecked
 				switch ($gate) {
 					case 1:
 						$feeprice = floatval(array_key_exists('checkcc_ru_auth_buy', $setting_prices['check_buycard']) ? $setting_prices['check_buycard']['checkcc_ru_auth_buy'] : 0);
@@ -244,6 +270,7 @@ class CardController extends Controller
 					$user->money = $user->money - $totalPrice;
 					$user->save();
 					$card->is_del = 1;
+					$card->category = "Almost Free";
 					$card->save();
 					//$card->update(['is_del' => 1]);
 					return response()->json(["status" => "dead card", "data" => 'DEAD CARD. Your account will be charged a $' . number_format($totalPrice, 1) . ' check fee.', 'fee' => $totalPrice]);
@@ -280,6 +307,7 @@ class CardController extends Controller
 				'user_id' => Auth::id(),
 				'card_id' => $id,
 				'cur_price' => $cardprice,
+				'btn_ref' => $btnRef,
 				'info' => $info
 			]
 		);
@@ -288,6 +316,7 @@ class CardController extends Controller
 		$card->save();
 		return response()->json(["status" => "success", "data" => 'You have successfully purchased this card.']);
 	}
+	
 
 	/**
 	 * Save multiple cards.

@@ -54,84 +54,85 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
                 <div class="container-fluid py-1 px-3">  
                     <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                    <ul class="navbar-nav  ms-md-auto justify-content-end">
-                        <li class="nav-item d-flex align-items-center">
-                            <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank">
-                                <i class="material-icons opacity-10">payment</i>    
-                                <span class="user_money" style="margin-left:10px; font-weight:700;">
-                                     <?php echo e(number_format(Auth::user()->money, 2, '.', ',')); ?>
 
-                                </span>
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item d-flex align-items-center">
+                        <ul class="navbar-nav  ms-md-auto justify-content-end">
+                            <li class="nav-item d-flex align-items-center">
+                                <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank">
+                                    <i class="material-icons opacity-10">payment</i>    
+                                    <span class="user_money" style="margin-left:10px; font-weight:700;">
+                                        <?php echo e(number_format(Auth::user()->money, 2, '.', ',')); ?>
+
+                                    </span>
+                                </a>
+                            </li>
                             
-                            <a class="btn btn-outline-warning btn-sm mb-0 me-3 " target="_blank">
-                                <i class="material-icons opacity-10">payment</i>    
-                                <span class="user_cart_cnt" style="margin-left:10px; font-weight:700;">payment</i> 0</span>
-                            </a>
-                        </li>
-                        <li class="nav-item d-xl-none pe-3 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link p-0 text-body" id="iconNavbarSidenav">
-                                <div class="sidenav-toggler-inner">
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img 
-                                    <?php if(Auth::check() && Auth::user()->image != ""): ?>
-                                        src="<?php echo e(Auth::user()->image); ?>"
-                                    <?php else: ?>
-                                        src="<?php echo e(asset('user_assets/images/avatar.png')); ?>"
-                                    <?php endif; ?> 
-                                    class="avatar avatar-sm  me-3"
-                                />
-                            </a>
-                            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                                <li>
-                                    <a class="dropdown-item border-radius-md" href="<?php echo e(route('user.mypage')); ?>">
-                                        <div class="d-flex py-1">
-                                            <div class="avatar avatar-sm bg-info  me-3  my-auto">
-                                                <i class="material-icons opacity-10">info</i>
-                                            </div>  
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-sm font-weight-normal mb-1">
-                                                    My Info
-                                                </h6>                                                
+                            <li class="nav-item d-flex align-items-center">
+                                
+                                <a class="btn btn-outline-warning btn-sm mb-0 me-3 " target="_blank">
+                                    <i class="material-icons opacity-10">payment</i>    
+                                    <span class="user_cart_cnt" style="margin-left:10px; font-weight:700;">payment</i> 0</span>
+                                </a>
+                            </li>                       
+                            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                                <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img 
+                                        <?php if(Auth::check() && Auth::user()->image != ""): ?>
+                                            src="<?php echo e(Auth::user()->image); ?>"
+                                        <?php else: ?>
+                                            src="<?php echo e(asset('user_assets/images/avatar.png')); ?>"
+                                        <?php endif; ?> 
+                                        class="avatar avatar-sm  me-3"
+                                    />
+                                </a>
+                                <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                                    <li>
+                                        <a class="dropdown-item border-radius-md" href="<?php echo e(route('user.mypage')); ?>">
+                                            <div class="d-flex py-1">
+                                                <div class="avatar avatar-sm bg-info  me-3  my-auto">
+                                                    <i class="material-icons opacity-10">info</i>
+                                                </div>  
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="text-sm font-weight-normal mb-1">
+                                                        My Info
+                                                    </h6>                                                
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item border-radius-md" href="#"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">                                    
-                                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none" style="display:none;">
-                                            <?php echo csrf_field(); ?>
-                                        </form>
-                                        <div class="d-flex py-1">
-                                            <div class="avatar avatar-sm bg-primary  me-3  my-auto">
-                                                <i class="material-icons opacity-10">logout</i>
-                                            </div>  
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-sm font-weight-normal mb-1">
-                                                    Log out
-                                                </h6>                                                  
-                                                <p class="text-xs text-secondary mb-0">
-                                                    <i class="fa fa-clock me-1"></i>
-                                                    <?php echo e(Auth::user()->str_id); ?>: Join Date: <?php echo e(Auth::user()->created_at->format('Y-m-d')); ?>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item border-radius-md" href="#"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">                                    
+                                            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none" style="display:none;">
+                                                <?php echo csrf_field(); ?>
+                                            </form>
+                                            <div class="d-flex py-1">
+                                                <div class="avatar avatar-sm bg-primary  me-3  my-auto">
+                                                    <i class="material-icons opacity-10">logout</i>
+                                                </div>  
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="text-sm font-weight-normal mb-1">
+                                                        Log out
+                                                    </h6>                                                  
+                                                    <p class="text-xs text-secondary mb-0">
+                                                        <i class="fa fa-clock me-1"></i>
+                                                        <?php echo e(Auth::user()->str_id); ?>: Join Date: <?php echo e(Auth::user()->created_at->format('Y-m-d')); ?>
 
-                                                </p>                                            
+                                                    </p>                                            
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>     
+                            <li class="nav-item d-xl-none pe-3 d-flex align-items-center">
+                                <a href="javascript:;" class="nav-link p-0 text-body" id="iconNavbarSidenav">
+                                    <div class="sidenav-toggler-inner">
+                                        <i class="sidenav-toggler-line"></i>
+                                        <i class="sidenav-toggler-line"></i>
+                                        <i class="sidenav-toggler-line"></i>
+                                    </div>
+                                </a>
+                            </li>                   
+                        </ul>
                     </div>
                 </div>
             </nav>

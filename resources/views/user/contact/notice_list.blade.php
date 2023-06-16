@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        <div class="alert alert-success alert-dismissible text-white" role="alert">
+        <div class="alert alert-success alert-dismissible text-white bussiness_bar" role="alert">
             <h5 class="text-white">Welcome to The World's Most Profitable Business</h5>
             <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -11,9 +11,9 @@
     </div>
 </div>
 <div class="row mt-4">
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
         <div class="card">
-            <div class="card-header p-3 pt-2">
+            <div class="card-header p-3 pt-2 info-border">
                 <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
                 <i class="material-icons opacity-10">person</i>
                 </div>
@@ -22,33 +22,25 @@
                 <h4 class="mb-0">{{$ntotalsUsers}}</h4>
                 </div>
             </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than lask week</p>
-            </div>
         </div>
     </div>
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
         <div class="card">
-            <div class="card-header p-3 pt-2">
+            <div class="card-header p-3 pt-2 info-border">
                 <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
+                     <i class="material-icons opacity-10">person</i>
                 </div>
                 <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Active Users</p>
-                <h4 class="mb-0">{{$activeUsers}}</h4>
+                    <p class="text-sm mb-0 text-capitalize">Active Users</p>
+                    <h4 class="mb-0">{{$activeUsers}}</h4>
                 </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than lask month</p>
-            </div>
+            </div>           
         </div>
     </div>
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <!-- <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
         <div class="card">
-            <div class="card-header p-3 pt-2">
-                <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+            <div class="card-header p-3 pt-2 info-border">
+                <div class="icon icon-lg icon-shape bg-gradient-darken-green shadow-success text-center border-radius-xl mt-n4 position-absolute">
                 <i class="material-icons opacity-10">account_balance_wallet</i>
                 </div>
                 <div class="text-end pt-1">
@@ -56,26 +48,18 @@
                 <h4 class="mb-0">{{$nCardsSold}}</h4>
                 </div>
             </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-                <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">-2%</span> than yesterday</p>
-            </div>
         </div>
-    </div>
-    <div class="col-xl-3 col-sm-6">
+    </div> -->
+    <div class="col-xl-4 col-sm-6">
         <div class="card">
-            <div class="card-header p-3 pt-2">
-                <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+            <div class="card-header p-3 pt-2 info-border">
+                <div class="icon icon-lg icon-shape bg-gradient-success shadow-info text-center border-radius-xl mt-n4 position-absolute">
                 <i class="material-icons opacity-10">payment</i>
                 </div>
                 <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">R.O.I.</p>
                 <h4 class="mb-0">50x ~ 2000x</h4>
                 </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than last year</p>
             </div>
         </div>
     </div>

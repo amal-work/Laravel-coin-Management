@@ -49,6 +49,18 @@
 									<p>Card List</p>
 								</a>
 							</li>
+							<li class="nav-item">
+								<a href="/admin/card/card_value_edit" class="nav-link <?php echo e((request()->routeIs('admin.card.card_value_edit')) ? 'active' : ''); ?>">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Almost Free Value</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="/admin/card/mega_card_edit" class="nav-link <?php echo e((request()->routeIs('admin.card.mega_card_edit')) ? 'active' : ''); ?>">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Mega Discount Value</p>
+								</a>
+							</li>
 						</ul>
                         
 					</li>

@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-            <div class="alert alert-success alert-dismissible text-white" role="alert">
+            <div class="alert bussiness_bar alert-dismissible text-white" role="alert">
                 <h5 class="text-white">Unleash Profits Beyond Imagination</h5>
                 <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -40,75 +40,106 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
+            var table = $('#cardTable').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    scrollY: "640px",
+                    pageLength: 10,
+                    autoWidth: false,
+                    // responsive: {
+                    //     details: {
+                    //         display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                    //         type: "none",
+                    //         target: ""
+                    //     }
+                    // },            
+                    fixedColumns: true,
+                    language: {
+                        paginate: {
+                        next: '&#8594;', // or '→'
+                        previous: '&#8592;' // or '←' 
+                        }
+                    },
+                    // fixedHeader: true,
+                    ajax: {
+                        url: "{{ route('user.my_card') }}"
+                    },
+                    columns: [
+                        {title: "ID", data: 'id', name: 'id', width:"40px" },
+                        {title: "Info", data: 'info', name: 'info', width: "80px"},
+                        {title: "Date", data: 'created_at', name: 'created_at'},
+                        {title: "Vote", data: 'vote', name: 'vote'},                
+                        {title: "", data: 'action', name: 'action', orderable:false, searchable: false, width: "40px", className: "text-center"},
+                    ],
+                    responsive: true, lengthChange: true,
+                    buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                });//.buttons().container().appendTo('#coinTable_wrapper .col-md-6:eq(0)');
+
+                
+                $('body').on('click', 'button[data-type]', function () {  
+                    var cardId = $(this).parent().parent().find('td:eq(0)').text();
+                    var voteType = $(this).attr('data-type');
+                    var card = $(this);
+
+                    $(this).addClass('btnPopup');
+                    
+                    var action = '/my_card/vote/' + cardId;           
+                    $.ajax({
+                        url: action,                
+                        type: "POST",                
+                        data: {voteType: voteType},
+                        dataType: 'json',
+                        success: function ({status, data}) {
+                            if(status == "success"){     
+                                console.log('success entered');
+                                if(voteType == 1){                                    
+                                    card.parent().html('<span class="btnPopup"><img alt="thumbnail" style="width:31px; height:30px;" src="' + '{{asset('user_assets/images/cards/')}}' + '/thumbup.png"></span><span class=""><img alt="thumbnail" style="width:31px; height:30px;" src="' + '{{asset('user_assets/images/cards/')}}' + '/thumbdown.png"></span>');     
+                                }else{
+                                    card.parent().html('<span class=""><img alt="thumbnail" style="width:31px; height:30px;" src="' + '{{asset('user_assets/images/cards/')}}' + '/thumbup.png"></span><span class="btnPopup"><img alt="thumbnail" style="width:31px; height:30px;" src="' + '{{asset('user_assets/images/cards/')}}' + '/thumbdown.png"></span>');     
+                                }
+                                    
+                            }else{
+                                
+                            }
+                        },
+                        error: function (data) {
+                            
+                        }
+                    });
+                });
+                $('body').on('click', '.btnEdit', function () {
+                    
+                    if(!confirm('You want to buy this card?')){return}
+                    var card = $(this);
+                    var cardId = $(this).attr('data-id');
+                    var action = '/card/' + cardId;
+                    
+                    $.ajax({
+                        url: action,
+                        data: {status},
+                        type: "POST",
+                        dataType: 'json',
+                        success: function ({status, data}) {
+                            if(status == "success"){
+                                card.parent().css("color", "blue")
+                                card.parent().html(data)
+                            }else{
+                                card.parent().css("color", "red")
+                                card.parent().html(data)
+                            }
+                        },
+                        error: function (data) {
+                            card.parent().css("color", "red")
+                            card.parent().html('You must buy more credit to get this card')
+                        }
+                    });
+                });
+                function refreshTable() {
+                    $('#cardTable').DataTable().ajax.reload();
+                }
         });	
-        var table = $('#cardTable').DataTable({
-            processing: true,
-            serverSide: true,
-            scrollY: "640px",
-            pageLength: 10,
-            autoWidth: false,
-            responsive: {
-                details: {
-                    display: $.fn.dataTable.Responsive.display.childRowImmediate,
-                    type: "none",
-                    target: ""
-                }
-            },
-            language: {
-                paginate: {
-                next: '&#8594;', // or '→'
-                previous: '&#8592;' // or '←' 
-                }
-            },
-            // fixedHeader: true,
-            ajax: {
-                url: "{{ route('user.my_card') }}"
-            },
-            columns: [
-                {title: "ID", data: 'id', name: 'id', width:"40px" },
-                {title: "Info", data: 'info', name: 'info'},
-                {title: "Date", data: 'created_at', name: 'created_at'},
-                {title: "", data: 'action', name: 'action', orderable:false, searchable: false, width: "40px", className: "text-center"},
-            ],
-            responsive: true, lengthChange: true,
-            buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        });//.buttons().container().appendTo('#coinTable_wrapper .col-md-6:eq(0)');
-        // $('body').on('click', '.btnEdit', function () {
-        //     var coinId = $(this).attr('data-id');
-        //     window.open('/admin/coin/edit/' + coinId, '정보 수정', 'scrollbars=1, resizable=1, width=1000, height=620');
-        //     return false;
-        // });
         
-        $('body').on('click', '.btnEdit', function () {
-            
-            if(!confirm('You want to buy this card?')){return}
-            var card = $(this);
-            var cardId = $(this).attr('data-id');
-            var action = '/card/' + cardId;
-            
-            $.ajax({
-                url: action,
-                data: {status},
-                type: "POST",
-                dataType: 'json',
-                success: function ({status, data}) {
-                    if(status == "success"){
-                        card.parent().css("color", "blue")
-                        card.parent().html(data)
-                    }else{
-                        card.parent().css("color", "red")
-                        card.parent().html(data)
-                    }
-                },
-                error: function (data) {
-                    card.parent().css("color", "red")
-                    card.parent().html('You must buy more credit to get this card')
-                }
-            });
-        });
-        function refreshTable() {
-            $('#cardTable').DataTable().ajax.reload();
-        }
         
     </script>
 @endpush
