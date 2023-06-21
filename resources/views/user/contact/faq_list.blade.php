@@ -1,4 +1,7 @@
 @extends('user.layouts.app')
+@section('third_party_responsive_script')
+<script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}">
+@endsection
 @section('content')
 <div class="row">
     <div class="col-12">

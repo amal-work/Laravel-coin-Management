@@ -50,15 +50,15 @@ class CardController extends Controller
 		$next_start = new Carbon('first day of next month');
 		$next_end = new Carbon('last day of next month');		
 
-		Card::where('exp_date', '<', $before_end)->update([
-			'is_del' => 1,
-			'category' => "Almost Free"
-		]);
+		// Card::where('exp_date', '<', $before_end)->update([
+		// 	'is_del' => 1,
+		// 	'category' => "Almost Free"
+		// ]);
 
-		Card::where('exp_date', '<', $next_end)
-			  ->where('exp_date', '>', $next_start)->update([			
-			'category' => "MEGA DISCOUNT"
-		]);		
+		// Card::where('exp_date', '<', $next_end)
+		// 	  ->where('exp_date', '>', $next_start)->update([			
+		// 	'category' => "MEGA DISCOUNT"
+		// ]);		
 
 		//dd(Carbon::now(), Carbon::now()->addDays(30));
 		$countries = Card::where('is_del', 0)->where('is_purchased', 0)->groupBy('country')->select('country')->get();
@@ -67,8 +67,9 @@ class CardController extends Controller
 
 		if ($request->ajax()) {
 			$cards = Card::where('is_purchased', 0)
-				// ->where('exp_date', '>', \DB::raw('NOW()'))
+				->where('is_del', 0)
 				->orderBy('created_at', 'DESC');
+				// ->where('exp_date', '>', \DB::raw('NOW()'))				
 			// $a =Card::whereBetween('exp_date', [now()->startOfMonth(), now()->endOfMonth()])
 			// 	->orderBy('exp_date', 'asc')
 			// 	->take(3);
@@ -235,6 +236,8 @@ class CardController extends Controller
 				} elseif ($result != 'APPROVED' && $result != 'ERROR') {
 					$totalPrice = $feeprice;
 					$user->money = $user->money - $totalPrice;
+					$card->is_del = 1;
+					$card->save();
 					$user->save();
 					return response()->json(["status" => "dead card", "data" => 'DEAD CARD. Your account will be charged a $' . number_format($totalPrice, 1) . ' check fee.', 'fee' => $totalPrice, 'msg' => 'Error card', 'result' => $result]);
 				}
@@ -277,6 +280,8 @@ class CardController extends Controller
 				} elseif ($result->status != 'live' && $result->status != 'error') {
 					$totalPrice = $feeprice;
 					$user->money = $user->money - $totalPrice;
+					$card->is_del = 1;
+					$card->save();
 					$user->save();
 					return response()->json(["status" => "dead card", "data" => 'DEAD CARD. Your account will be charged a $' . number_format($totalPrice, 1) . ' check fee.', 'fee' => $totalPrice]);
 				}

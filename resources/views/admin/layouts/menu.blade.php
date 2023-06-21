@@ -56,7 +56,7 @@
 									<p>Card List</p>
 								</a>
 							</li>
-							<li class="nav-item">
+							<!-- <li class="nav-item">
 								<a href="/admin/card/card_value_edit" class="nav-link {{ (request()->routeIs('admin.card.card_value_edit')) ? 'active' : '' }}">
 									<i class="far fa-circle nav-icon"></i>
 									<p>Almost Free Value</p>
@@ -67,7 +67,7 @@
 									<i class="far fa-circle nav-icon"></i>
 									<p>Mega Discount Value</p>
 								</a>
-							</li>
+							</li> -->
 						</ul>
                         {{-- <ul class="nav nav-treeview">
 							<li class="nav-item">

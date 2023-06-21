@@ -37,9 +37,9 @@ class CardController extends Controller
     {
 
         $title = "Card Management";
-		$delete_exp_date = Card::where('exp_date','<', \DB::raw('NOW()'))->update([
-            'is_del' => 1
-		]);
+		// $delete_exp_date = Card::where('exp_date','<', \DB::raw('NOW()'))->update([
+        //     'is_del' => 1
+		// ]);
         $countries = Card::where('is_purchased', 0)->groupBy('country')->select('country')->get();
 
         $categories = Card::where('is_purchased', 0)->groupBy('category')->select('category')->get();

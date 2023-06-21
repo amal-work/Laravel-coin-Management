@@ -1,4 +1,7 @@
 @extends('user.layouts.app')
+@section('third_party_responsive_script')
+<script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}">
+@endsection
 @section('content')
 <div class="row">
     <div class="col-12">
@@ -94,7 +97,7 @@
         });
         if($('#Table').length){
             var table = $('#Table').DataTable({
-                processing: true,
+                processing: false,
                 serverSide: true,
                 scrollY: "640px",
                 pageLength: 10,

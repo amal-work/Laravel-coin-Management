@@ -80,7 +80,7 @@
                 {title: "User", data: 'user_id', name: 'user_id', width:"120px", className: "text-center"},
                 {title: "Date", data: 'created_at', name: 'created_at', width:'120px', className: "text-center"},
                 {title: "Wallet", data: 'wallet_address', name:'wallet_address'},
-                {title: "Amount", data: 'amount', name: 'amount', width:'80px', render(data){ return data ? data.toFixed(2) : '0.00';}},
+                {title: "Amount", data: 'amount', name: 'amount', width:'80px', render(data){ return data ? parseFloat(data).toFixed(2) : '0.00';}},
                 {title: "Type", data: 'coin_type', name: 'coin_type', width:'80px'},
                 {title: "Action/Result", data: 'action', name: 'action', orderable:false, searchable: false, width: "120px", className: "text-center"},
             ],

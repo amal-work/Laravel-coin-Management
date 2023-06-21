@@ -40,8 +40,8 @@
                 </style>
                 <select name="category" id="category" class="form-control select2bs4 " style="font-size:10px !important; width: 100%;"  required>
                     <option value="">==All==</option>
-                    <option value="megadiscount" >[MEGA DSICOUNT]Expire Soon</option>
-                    <option value="almostfree">Almost Free</option>
+                    <!-- <option value="megadiscount" >[MEGA DSICOUNT]Expire Soon</option>
+                    <option value="almostfree">Almost Free</option> -->
 
                     @foreach ($categories as $category)
                         <option value="{{$category->category}}" >{{$category->category}}</option>

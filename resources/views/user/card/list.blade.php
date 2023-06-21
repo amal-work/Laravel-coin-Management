@@ -1,7 +1,9 @@
 @extends('user.layouts.app')
 @section('script')
 {{-- <script src="{{asset('admin_assets/js/coin/coin.js')}}"></script> --}}
-
+@endsection
+@section('third_party_responsive_script')
+<script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}">
 @endsection
 @section('third_party_stylesheets')
 <link rel="stylesheet" href="{{asset('user_assets/css/bulma.css')}}">
@@ -61,8 +63,8 @@
                                 <label>Categroy</label>
                                 <select name="category" id="category" class="form-control select2bs4 " style="font-size:10px !important; width: 100%;"  >
                                     <option value="">All</option>
-                                    <option value="megadiscount" >[MEGA DSICOUNT]Expire Soon</option>
-                                    <option value="almostfree">Almost Free</option>
+                                    <!-- <option value="megadiscount" >[MEGA DSICOUNT]Expire Soon</option>
+                                    <option value="almostfree">Almost Free</option> -->
                                     @foreach ($categories as $category)
                                         <option value="{{$category->category}}" >{{$category->category}}</option>
                                     @endforeach

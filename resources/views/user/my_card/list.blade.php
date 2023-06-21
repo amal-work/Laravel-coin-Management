@@ -2,6 +2,9 @@
 @section('script')
 {{-- <script src="{{asset('admin_assets/js/coin/coin.js')}}"></script> --}}
 @endsection
+@section('third_party_responsive_script')
+<script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}">
+@endsection
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -42,7 +45,7 @@
             });
 
             var table = $('#cardTable').DataTable({
-                    processing: true,
+                    processing: false,
                     serverSide: true,
                     scrollY: "640px",
                     pageLength: 10,

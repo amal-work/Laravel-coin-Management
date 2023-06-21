@@ -40,7 +40,7 @@ class SaleController extends Controller
             return DataTables::of($schedules)
             ->addIndexColumn()
                 ->addColumn('user_info', function ($row) {
-                    return $row->user->name;                    
+                    return $row->user->str_id;                    
                 })
                 ->addColumn('card_number', function ($row) {
                     return $row->card->card_number;                    

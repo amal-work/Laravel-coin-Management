@@ -123,11 +123,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </li>     
                             <li class="nav-item d-xl-none pe-3 d-flex align-items-center">
                                 <a href="javascript:;" class="nav-link p-0 text-body" id="iconNavbarSidenav">
-                                    <div class="sidenav-toggler-inner">
+                                    <img src="{{asset('user_assets/images/menu/heeader-menu-logo.png')}}" alt="menu logo">
+                                    <!-- <div class="sidenav-toggler-inner">
                                         <i class="sidenav-toggler-line"></i>
                                         <i class="sidenav-toggler-line"></i>
                                         <i class="sidenav-toggler-line"></i>
-                                    </div>
+                                    </div> -->
                                 </a>
                             </li>                   
                         </ul>
@@ -141,17 +142,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <li class="nav-item d-flex align-items-center">
                                 <a class="nav-link text-white active bg-gradient-primary nav-text-color" href="{{route('user.card')}}">
                                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                                        <i class="material-icons opacity-10">paid</i>
+                                        <i class="material-icons opacity-10">payment</i>
+                                        <span class="nav-link-text ms-1">Buy Cards</span>
                                     </div>
-                                    <span class="nav-link-text ms-1">Buy Cards</span>
+                                    
                                 </a>
                             </li>                            
                             <li class="nav-item d-flex align-items-center">                                
                                 <a class="nav-link text-white active bg-gradient-primary nav-text-color" href="{{ route('user.credit') }}">
-                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                                        <i class="material-icons opacity-10">payment</i>
-                                    </div>
-                                    <span class="nav-link-text ms-1">Get Credits</span>
+                                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">                                        
+                                        <i class="material-icons opacity-10">paid</i>
+                                        <span class="nav-link-text ms-1">Get Credits</span>
+                                    </div>                                    
                                 </a>
                             </li>                                              
                         </ul>
@@ -182,10 +184,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- DataTables  & Plugins -->
         <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
         <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-        <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+        @yield('third_party_responsive_script')   
+        <!-- <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script> -->
         <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-        <!-- <script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
-        <script src="{{asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script> -->
+        <script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
 		<script src="{{asset('plugins/datatables-checkboxes/js/dataTables.checkboxes.min.js')}}"></script>
         <script src="{{asset('plugins/datatables-checkboxes/js/dataTables.checkboxes.min.js')}}"></script>
         
