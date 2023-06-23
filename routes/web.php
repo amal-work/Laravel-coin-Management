@@ -166,7 +166,14 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(
         Route::get('contact/notice/{id}',           [App\Http\Controllers\Admin\Contact\NoticeController::class, 'show'])->name('notice.edit');
         Route::post('contact/notice/{id}',          [App\Http\Controllers\Admin\Contact\NoticeController::class, 'save'])->name('notice.save');
         Route::delete('contact/notice/{id}',        [App\Http\Controllers\Admin\Contact\NoticeController::class, 'delete'])->name('notice.delete');
+
+        Route::get('contact/testimonial',           [App\Http\Controllers\Admin\Contact\NoticeController::class, 'indexTestimonial'])->name('notice.indexTestimonial');
+        Route::get('contact/testimonial/{id}',      [App\Http\Controllers\Admin\Contact\NoticeController::class, 'showTestimonial'])->name('notice.showTestimonial');
+        Route::post('contact/testimonial/{id}',     [App\Http\Controllers\Admin\Contact\NoticeController::class, 'saveTestimonial'])->name('notice.saveTestimonial');
+        Route::delete('contact/testimonial/{id}',   [App\Http\Controllers\Admin\Contact\NoticeController::class, 'deleteTestmimonial'])->name('notice.deleteTestmimonial');
+        
         //message
+
         Route::get('contact/msg',                   [App\Http\Controllers\Admin\Contact\MSGController::class, 'index'])->name('msg.list');
         Route::get('contact/msg/{id}',              [App\Http\Controllers\Admin\Contact\MSGController::class, 'show'])->name('msg.edit');
         Route::post('contact/msg/{id}',             [App\Http\Controllers\Admin\Contact\MSGController::class, 'save'])->name('msg.save');

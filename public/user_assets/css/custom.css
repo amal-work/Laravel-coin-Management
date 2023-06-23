@@ -195,6 +195,92 @@ table.table-bordered.dataTable td{
   display: none;
 } 
 
+@media (max-width: 1120px) {
+  /* table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control{
+    width: 300px;
+  } */
+  table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control, 
+  table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control{
+    padding-right: 100px;
+  }
+  table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, 
+  table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before{
+    width: 80px;
+    height: auto;
+    content: url('../images/plus-icon.png');
+    background: transparent;
+    z-index: 99999;
+    left: 45px; 
+    border: none;   
+    box-shadow: none;
+    top: 16px;
+  }
+  table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before, 
+  table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before{
+    width: 80px;
+    height: auto;
+    content: url('../images/plus-icon.png');
+    background: transparent;
+    top: 16px
+  }
+  table td.child span.dtr-data{
+    word-break: break-all;
+    white-space: break-spaces;
+  }
+  table#cardTable.dataTable,  table#Table.dataTable{
+    border-collapse: collapse !important;
+  }
+  table#cardTable.dataTable tr, table#Table.dataTable tr{
+    border-bottom: 1px solid #efefef;
+  }
+  table#cardTable.dataTable td, table#Table.dataTable td{
+    border: none;
+  }
+  table#cardTable.dataTable td ul li span.dtr-title{
+    font-weight: bolder;
+  }
+}
+@media (min-width: 1200px) {
+  table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control{
+    width: 300px;
+  }
+  table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, 
+  table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before{
+    width: 80px;
+    height: auto;
+    content: url('../images/plus-icon.png');
+    background: transparent;
+    z-index: 99999;
+    left: 45px; 
+    border: none;   
+    box-shadow: none;
+    top: 17px;
+  }
+  table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before, 
+  table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before{
+    width: 80px;
+    height: auto;
+    content: url('../images/plus-icon.png');
+    background: transparent;
+    top: 16px
+  }
+  table td.child span.dtr-data{
+    word-break: break-all;
+    white-space: break-spaces;
+  }
+  table#cardTable.dataTable,  table#Table.dataTable{
+    border-collapse: collapse !important;
+  }
+  table#cardTable.dataTable tr, table#Table.dataTable tr{
+    border-bottom: 1px solid #efefef;
+  }
+  table#cardTable.dataTable td, table#Table.dataTable td{
+    border: none;
+  }
+  table#cardTable.dataTable td ul li span.dtr-title{
+    font-weight: bolder;
+  }
+}
 @media (max-width: 765px)  {
  .mobile-navbar2{
     display: block;
@@ -220,34 +306,5 @@ table.table-bordered.dataTable td{
     height: 60px !important;    
     padding: 4px;
   }
-  table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control, 
-  table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control{
-    width: 80px;
-    height: auto;
-    content: url('../images/plus-icon.png');
-    background: transparent;
-    z-index: 99999;
-  }
-  table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control, 
-  table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control{
-    width: 80px;
-    height: auto;
-    content: url('../images/plus-icon.png');
-  }
-  table td.child span.dtr-data{
-    word-break: break-all;
-    white-space: break-spaces;
-  }
-  table#cardTable.dataTable,  table#Table.dataTable{
-    border-collapse: collapse !important;
-  }
-  table#cardTable.dataTable tr, table#Table.dataTable tr{
-    border-bottom: 1px solid #efefef;
-  }
-  table#cardTable.dataTable td, table#Table.dataTable td{
-    border: none;
-  }
-  table#cardTable.dataTable td ul li span.dtr-title{
-    font-weight: bolder;
-  }
+  
 }

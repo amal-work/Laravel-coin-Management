@@ -130,6 +130,12 @@
 									<p>News</p>
 								</a>
 							</li>
+							<li class="nav-item">
+								<a href="{{ route('admin.notice.indexTestimonial') }}" class="nav-link {{ (request()->routeIs('admin.notice.indexTestimonial')) ? 'active' : '' }}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Testimonial</p>
+								</a>
+							</li>
 						</ul>
 					</li>
                     <li class="nav-item  {{ (request()->routeIs('admin.setting*')) ? 'menu-open' : '' }}">

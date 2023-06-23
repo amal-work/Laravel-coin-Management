@@ -3,7 +3,7 @@
 {{-- <script src="{{asset('admin_assets/js/coin/coin.js')}}"></script> --}}
 @endsection
 @section('third_party_responsive_script')
-<script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}">
+<script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 @endsection
 @section('content')
     <div class="row">

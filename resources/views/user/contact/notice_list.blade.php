@@ -1,6 +1,13 @@
 @extends('user.layouts.app')
 @section('third_party_responsive_script')
-<script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}">
+<script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('user_assets/js/owl.carousel.min.js')}}"></script>
+@endsection
+@section('third_party_stylesheets')
+<link rel="stylesheet" href="{{asset('user_assets/css/owl.carousel.min.css')}}"> 
+<link rel="stylesheet" href="{{asset('user_assets/css/owl.theme.min.css')}}"> 
+<link rel="stylesheet" href="{{asset('user_assets/css/fontawesome-all.min.css')}}"> 
+<link rel="stylesheet" href="{{asset('user_assets/css/testimonial.css')}}"> 
 @endsection
 @section('content')
 <div class="row">
@@ -67,7 +74,33 @@
         </div>
     </div>
 </div>
-<div class="row mt-4">
+<div class="row">
+    <div class="col-md-12">
+        <div id="testimonial-slider" class="owl-carousel">
+            @foreach($all_testmonial as $reviewItem)
+                <div class="testimonial">                               
+                    <div class="testimonial-content">                   
+                        <div class="content">
+                            <h4 class="name">{{$reviewItem->name}}</h4>                        
+                            <ul class="rating">
+                                <li class="fa fa-star"></li>
+                                <li class="fa fa-star"></li>
+                                <li class="fa fa-star"></li>
+                                <li class="fa fa-star"></li>
+                                <li class="fa fa-star"></li>
+                            </ul>
+                            <span class="post">{{$reviewItem->tagline}}</span>
+                        </div>
+                    </div>                
+                    <p class="description">                        
+                        {{Str::of($reviewItem->content)->limit(120)}}
+                    </p>
+                </div>
+            @endforeach                        
+        </div>
+    </div>
+</div>
+<div class="row mt-0">
     <div class="col-12">
         <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -89,6 +122,18 @@
 @push('page_scripts')
     <script>
         $(document).ready(function () {
+            
+            $("#testimonial-slider").owlCarousel({
+                items:2,
+                itemsDesktop:[1000,2],
+                itemsDesktopSmall:[979,1],
+                itemsTablet:[768,1],
+                pagination:true,
+                navigation:false,
+                navigationText:["",""],
+                slideSpeed:1000,
+                autoPlay:true
+            });
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

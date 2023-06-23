@@ -73,6 +73,7 @@
             responsive: true, lengthChange: true,
             buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#Table_wrapper .col-md-6:eq(0)');
+        
         $('body').on('click', '.btnEdit', function () {
             var noticeId = $(this).attr('data-id');
             window.open('/admin/contact/notice/' + noticeId, 'Edit', 'scrollbars=1, resizable=1, width=1000, height=620');

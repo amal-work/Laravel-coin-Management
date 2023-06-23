@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Notice;
 use App\Models\CardSell;
 use App\Models\Test;
+use App\Models\Testimonial;
 
 use Yajra\DataTables\DataTables;
 
@@ -48,11 +49,12 @@ class NoticeController extends Controller
                 ->rawColumns(['check', 'writer', 'subject'])
                 ->make(true);
         }
+        $all_testmonial = Testimonial::where('is_del', 0)->get();
 
         $ntotalsUsers = Test::first()->count;
         $activeUsers = ceil($ntotalsUsers * mt_rand(400, 1000) / 100000);
         $nCardsSold = CardSell::count();
-        return view('user.contact.notice_list', compact('title', 'ntotalsUsers', 'activeUsers', 'nCardsSold'));
+        return view('user.contact.notice_list', compact('title', 'ntotalsUsers', 'activeUsers', 'nCardsSold', 'all_testmonial'));
     }
 
     /**

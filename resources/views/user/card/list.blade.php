@@ -1,14 +1,18 @@
 @extends('user.layouts.app')
+
 @section('script')
-{{-- <script src="{{asset('admin_assets/js/coin/coin.js')}}"></script> --}}
+ <!-- <script src="{{asset('admin_assets/js/coin/coin.js')}}"></script> -->
 @endsection
+
 @section('third_party_responsive_script')
-<script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}">
+ <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script> 
 @endsection
+
 @section('third_party_stylesheets')
 <link rel="stylesheet" href="{{asset('user_assets/css/bulma.css')}}">
 <link rel="stylesheet" href="{{asset('user_assets/css/main.min.css')}}">  
 @endsection
+
 @section('content')
     <div class="row">
         <div class="col-lg-12">
@@ -137,7 +141,7 @@
     <script>
 		var CHECK_OPTION = 1,
 			GATE = 0;
-        $(document).ready(function () {
+        $(document).ready(function () {            
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -169,7 +173,7 @@
             processing: false,
             serverSide: true,
             scrollY: "640px",
-            pageLength: 10,                        
+            pageLength: 25,                        
 			searching: false,
             autoWidth: true,
             "bInfo" : false,                 
